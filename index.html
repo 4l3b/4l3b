@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Name</title>
+    <style>
+      :root {
+        --bg: #f2f4f6;
+        --text: #1f2328;
+        --card-bg: #ffffff;
+        --border: #c7ccd1;
+        --link: #0077cc;
+      }
+
+      [data-theme="dark"] {
+        --bg: #1e1e1e;
+        --text: #eee;
+        --card-bg: #2b2b2b;
+        --border: #444;
+        --link: #66b2ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      header {
+        padding-top: 1rem;
+        text-align: center;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        position: relative;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      header p {
+        margin-top: 0.5rem;
+        color: var(--text);
+        opacity: 0.7;
+      }
+
+      .theme-switch-wrapper {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 10;
+      }
+
+      .theme-switch {
+        position: relative;
+        width: 40px;
+        height: 19px;
+        background: var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .theme-switch::before {
+        content: "☼";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 16px;
+        height: 16px;
+        background: var(--text);
+        color: white;
+        font-size: 19px;
+        line-height: 17px;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+      }
+
+      [data-theme="dark"] .theme-switch::before {
+        transform: translateX(20px);
+        content: "☾";
+        color: black;
+        font-size: 14px;
+      }
+
+      #lang-toggle {
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .section-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0.7rem 0;
+      }
+
+      .section-navbar button {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        color: var(--text);
+        border-bottom: 2px solid transparent;
+        transition: border 0.3s;
+      }
+
+      .section-navbar button.active-tab {
+        border-bottom: 2px solid #9483a7;
+        font-weight: bold;
+      }
+
+      .sections-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      #animated-wrapper {
+        transition: height 0.3s ease;
+        overflow: hidden;
+      }
+
+      .section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+      }
+      
+      .section.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        position: relative;
+      }
+
+      .section.hide-left {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      .section.hide-right {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 2rem auto 0 auto;
+        padding: 0 1rem;
+      }
+
+      .project {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin-bottom: 0.5rem;
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+
+      .project img {
+        width: 100%;
+        height: auto;
+        max-width: 150px;
+        max-height: 100px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .project-content {
+        flex: 1;
+      }
+
+      .project-content h2 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      .project-content p {
+        margin: 0.5rem 0 1rem;
+        color: var(--text);
+        opacity: 0.85;
+      }
+
+      .project-content a {
+        text-decoration: none;
+        color: var(--link);
+      }
+
+      body.linguistics-active .pill-link {
+        background-color: #9483a7 !important;
+      }
+
+      body.linguistics-active .section-navbar button.active-tab {
+        border-bottom: 2px solid #9483a7 !important;
+      }
+
+      body.linguistics-active .read-more-btn {
+        color: #9483a7 !important;
+      }
+
+      body.linguistics-active .links {
+        color: #9483a7 !important;
+      }
+
+      body.data-science-active .pill-link {
+        background-color: #83a794 !important;
+      }
+
+      body.data-science-active .section-navbar button.active-tab {
+        border-bottom: 2px solid #83a794 !important;
+      }
+
+      body.data-science-active .read-more-btn {
+        color: #83a794 !important;
+      }
+
+      body.data-science-active .links {
+        color: #83a794 !important;
+      }
+
+      .pill-link {
+        background-color: #9483a7;
+        color: white !important;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 20px;
+        text-decoration: none;
+        display: inline-block;
+        align-self: flex-start;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .more-text {
+        display: none;
+        margin-top: 0.5rem;
+        color: var(--text);
+        opacity: 0.85;
+      }
+
+      .read-more-btn, .links {
+        background: none;
+        border: none;
+        color: #9483a7;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0.5rem;
+        text-decoration: none;
+      }
+
+      #contact-section {
+        padding: 2rem;
+        margin: 0.5rem auto;
+        font-size: 1rem;
+        padding: 1.5rem;
+      }
+
+      #contact-section::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--text), transparent);
+        margin-bottom: 1.8rem;
+        opacity: 0.3;
+      }
+
+      #contact-section h2 {
+        margin-top: 0;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+
+      #contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      #contact-form label {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      #contact-form input[type="email"],
+      #contact-form textarea {
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: 'Helvetica Neue', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        transition: border-color 0.3s;
+      }
+
+      #contact-form input[type="email"]:focus,
+      #contact-form textarea:focus {
+        border-color: var(--link);
+        outline: none;
+      }
+
+      #contact-form #message-send {
+        align-self: flex-end;
+      }
+
+      footer {
+        text-align: center;
+        padding-bottom: 2rem;
+        font-size: 0.9rem;
+        color: var(--text);
+        opacity: 0.6;
+      }
+
+      @media (max-width: 600px) {
+        .project {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .project img {
+          max-width: 90%;
+          height: auto;
+          max-height: 180px;
+        }
+
+        .project-content {
+          text-align: center;
+        }
+      }
+      
+    </style>
+  </head>
+  
+  <body>
+    <header>
+      <h1 id="title">Alessandro Bigolin</h1>
+      <h3 id="subtitle">Projects</h3>
+      <div class="theme-switch-wrapper">
+        <div class="theme-switch" onclick="toggleTheme()"></div>
+        <button id="lang-toggle" onclick="toggleLanguage()">🇬🇧</button>
+      </div>
+    </header>
+    
+    <div class="section-navbar">
+      <button onclick="showSection('linguistics')" id="btn-linguistics" class="active-tab">Linguistics</button>
+      <button onclick="showSection('data-science')" id="btn-data-science">Data Science</button>
+    </div>
+    
+    <div class="container">
+      <div id="animated-wrapper">
+        <div id="sections-wrapper" class="sections-wrapper">
+        
+          <div id="section-linguistics" class="section show">
+            <!-- Linguistics content -->
+            <div class="project">
+              <img src="https://via.placeholder.com/150x100?text=Syntax" alt="Linguistics project">
+              <div class="project-content">
+                <h2 id="project1-li-title">Syntax Tree Parser</h2>
+                <p id="project1-li-desc">
+                  A tool that visualizes syntactic trees based on user input. Built using Python and NLTK.
+                </p>
+                <p class="more-text" style="display: none;" id="project1-li-desc-more">
+                  This project allows linguists to input sentence structures and generates syntactic trees in visual format. It supports multiple treebanks and exports in SVG. Ideal for teaching and analysis.
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="#" class="pill-link" id="project1-li-link">View on GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="section-data-science" class="section hide-right">
+            <!-- Data Science content -->
+            <div class="project">
+              <img src="https://via.placeholder.com/150x100?text=Project+1" alt="Project 1 thumbnail">
+              <div class="project-content">
+                <h2 id="project1-ds-title">Predicting Housing Prices</h2>
+                <p id="project1-ds-desc">A regression model to predict housing prices using the Boston dataset. Explored feature importance and model evaluation.</p>
+                <p class="more-text" style="display: none;" id="project1-ds-desc-more">
+                  This project uses regression analysis to predict housing prices based on various features from the Boston dataset. It includes data exploration, feature engineering, and model evaluation.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="#" class="pill-link" id="project1-ds-link">View on GitHub</a>
+                </div>  
+              </div>
+            </div>
+            
+            <div class="project">
+              <img src="https://via.placeholder.com/150x100?text=Project+2" alt="Project 2 thumbnail">
+              <div class="project-content">
+                <h2 id="project2-ds-title">Customer Churn Analysis</h2>
+                <p id="project2-ds-desc">Analyzed churn patterns using logistic regression and visualizations. Improved retention strategies with data insights.</p>
+                <p class="more-text" style="display: none;" id="project2-ds-desc-more">
+                  This project analyzes customer churn patterns using logistic regression and visualizations. It provides insights to improve retention strategies based on data analysis.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="#" class="pill-link" id="project2-ds-link">View on Flourish</a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+      
+      <div id="contact-section">
+        <h2 id="contact-title">Contact me</h2>
+        <p id="contact-desc">If you’re interested in my work, feel free to check out my <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> profile or send me an email below.</p>
+        <form id="contact-form" action="https://formspree.io/f/tuo-id" method="POST">
+          <label for="email" id="contact-form-email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+          <label for="message" id="contact-form-message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          <button type="submit" class="pill-link" id="message-send">Send</button>
+        </form>
+      </div>
+      
+    </div>
+    
+    <footer id="footer-text"> © 2025 Alessandro Bigolin. All rights reserved. </footer>
+    
+    <script>
+      const root = document.documentElement;
+      let savedLang = localStorage.getItem('lang') || 'en';
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+      }
+      const translations = {
+        es: {
+          title: "Tu Nombre",
+          subtitle: "Proyectos",
+          "btn-linguistics": "Lingüística",
+          "btn-data-science": "Ciencia de Datos",
+          "btn-contact": "Contacto",
+          "read-more-btn": "Leer más ▾",
+          "read-less-btn": "Leer menos ▴",
+          
+          "project1-li-title": "Analizador de Árboles Sintácticos",
+          "project1-li-desc": "Una herramienta que visualiza árboles sintácticos basados en la entrada del usuario. Construida usando Python y NLTK.",
+          "project1-li-desc-more": "Este proyecto permite a los lingüistas ingresar estructuras de oraciones y genera árboles sintácticos en formato visual. Soporta múltiples bancos de árboles y exporta en SVG. Ideal para enseñanza y análisis.",
+          "project1-li-link": "Ver en GitHub",
+          "project1-ds-title": "Predicción de Precios de Vivienda",
+          "project1-ds-desc": "Un modelo de regresión para predecir precios de vivienda usando el conjunto de datos de Boston. Exploración de características y evaluación del modelo.",
+          "project1-ds-desc-more": "Este proyecto utiliza análisis de regresión para predecir precios de vivienda basados en varias características del conjunto de datos de Boston. Incluye exploración de datos, ingeniería de características y evaluación del modelo.",
+          "project1-ds-link": "Ver en GitHub",
+          "project2-ds-title": "Análisis de Abandono de Clientes",
+          "project2-ds-desc": "Análisis de patrones de abandono usando regresión logística y visualizaciones. Mejora de estrategias de retención con insights.",
+          "project2-ds-desc-more": "Este proyecto analiza patrones de abandono de clientes usando regresión logística y visualizaciones. Proporciona insights para mejorar estrategias de retención basadas en análisis de datos.",
+          "project2-ds-link": "Ver en Flourish",
+          "contact-title": "Contáctame",
+          "contact-desc": 'Si te interesa mi trabajo, no dudes en visitar mi perfil de <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> o enviarme un correo electrónico aquí abajo.',
+          "contact-form-email": "Tu correo",
+          "email-placeholder": "tu.email@ejemplo.com",
+          "contact-form-message": "Mensaje",
+          "message": "Escribe tu mensaje aquí...",
+          "message-send": "Envía",
+          "footer-text": "© 2025 Alessandro Bigolin. Todos los derechos reservados.",
+          "lang-toggle": "🇪🇸"
+        }
+      };
+
+      function toggleTheme() {
+        const current = root.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+
+      function toggleLanguage() {
+        savedLang = savedLang === 'en' ? 'es' : 'en';
+        applyLanguage(savedLang);
+        localStorage.setItem('lang', savedLang);
+      }
+      const originalTexts = {};
+
+      function saveOriginalTexts() {
+        for (const id in translations.es) {
+          const el = document.getElementById(id);
+          if (el) {
+            if (id === "contact-desc") {
+              originalTexts[id] = el.innerHTML;
+            } else {
+              originalTexts[id] = el.innerText;
+            }
+          }
+        }
+      }
+
+      function applyLanguage(lang) {
+        if (lang === 'en') {
+          for (const id in originalTexts) {
+            const el = document.getElementById(id);
+            if (el) {
+              if (id === "contact-desc") {
+                el.innerHTML = originalTexts[id];
+              } else {
+                el.innerText = originalTexts[id];
+              }
+            }
+          }
+          document.getElementById('email').placeholder = "your.email@example.com";
+
+          document.querySelectorAll('.read-more-btn').forEach(btn => {
+            const projectContent = btn.closest('.project-content');
+            const moreText = projectContent.querySelector('.more-text');
+            btn.textContent = (moreText.style.display === "block")
+              ? "Read less ▴"
+              : "Read more ▾";
+          });
+          return;
+        }
+        const langData = translations[lang];
+        for (const id in langData) {
+          const el = document.getElementById(id);
+          if (el) {
+            if (id === "contact-desc") {
+              el.innerHTML = langData[id];
+            } else {
+              el.innerText = langData[id];
+            }
+          }
+        }
+        if (langData['email-placeholder']) {
+          document.getElementById('email').placeholder = langData['email-placeholder'];
+        }
+
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+          const projectContent = btn.closest('.project-content');
+          const moreText = projectContent.querySelector('.more-text');
+          btn.textContent = (moreText.style.display === "block")
+            ? langData["read-less-btn"]
+            : langData["read-more-btn"];
+        });
+      }
+      saveOriginalTexts();
+      applyLanguage(savedLang);
+
+      function showSection(section) {
+        const ling = document.getElementById('section-linguistics');
+        const data = document.getElementById('section-data-science');
+        const btnL = document.getElementById('btn-linguistics');
+        const btnD = document.getElementById('btn-data-science');
+        const wrapper = document.getElementById('animated-wrapper');
+        const body = document.body;
+
+        // Toggle body class for color theme
+        if (section === 'linguistics') {
+          body.classList.add('linguistics-active');
+          body.classList.remove('data-science-active');
+        } else {
+          body.classList.add('data-science-active');
+          body.classList.remove('linguistics-active');
+        }
+
+        // Save current height
+        const startHeight = wrapper.offsetHeight;
+      
+        // Remove show temporarily to get correct height
+        ling.classList.remove('show');
+        data.classList.remove('show');
+      
+        // Wait for DOM to update
+        requestAnimationFrame(() => {
+          let newSection;
+          if (section === 'linguistics') {
+            newSection = ling;
+            btnL.classList.add('active-tab');
+            btnD.classList.remove('active-tab');
+      
+            ling.classList.remove('hide-left', 'hide-right');
+            data.classList.remove('hide-left');
+            data.classList.add('hide-right');
+          } else {
+            newSection = data;
+            btnD.classList.add('active-tab');
+            btnL.classList.remove('active-tab');
+      
+            data.classList.remove('hide-left', 'hide-right');
+            ling.classList.remove('hide-right');
+            ling.classList.add('hide-left');
+          }
+      
+          // Temporarily make the new section visible to measure height
+          newSection.classList.add('show');
+          newSection.style.visibility = 'hidden';
+          newSection.style.position = 'absolute';
+      
+          // Measure new height
+          const endHeight = newSection.offsetHeight;
+      
+          // Set wrapper height to trigger transition
+          wrapper.style.height = startHeight + 'px';
+          
+          requestAnimationFrame(() => {
+            wrapper.style.height = endHeight + 'px';
+            
+            // Clean up temporary styles after transition ends
+            setTimeout(() => {
+              newSection.style.visibility = '';
+              newSection.style.position = '';
+              wrapper.style.height = ''; // remove inline height to allow natural growth
+            }, 300);
+          });
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll('.read-more-btn');
+
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            const projectContent = button.closest('.project-content');
+            const projectCard = button.closest('.project');
+            const moreText = projectContent.querySelector('.more-text');
+            const lang = savedLang;
+
+            // 1. Get current card height
+            const startHeight = projectCard.offsetHeight;
+
+            // 2. Toggle .more-text visibility (but keep it hidden for measurement)
+            const willExpand = moreText.style.display === "none" || moreText.style.display === "";
+            moreText.style.display = willExpand ? "block" : "none";
+
+            // 3. Force DOM update and get new height
+            const endHeight = projectCard.offsetHeight;
+
+            // 4. Set card to start height, then animate to end height
+            projectCard.style.height = startHeight + "px";
+            void projectCard.offsetWidth; // Force reflow
+            projectCard.style.height = endHeight + "px";
+
+            // 5. Update button text
+            button.textContent = lang === "es"
+              ? (willExpand ? translations.es["read-less-btn"] : translations.es["read-more-btn"])
+              : (willExpand ? "Read less ▴" : "Read more ▾");
+
+            // 6. After transition, reset height for natural resizing
+            setTimeout(() => {
+              projectCard.style.height = '';
+            }, 300);
+          });
+        });
+      });
+
+    </script>
+    
+  </body>
+  
+</html>
