@@ -73,7 +73,7 @@
       }
 
       .theme-switch::before {
-        content: "☼";
+        content: "☾";
         position: absolute;
         top: 2px;
         left: 2px;
@@ -81,17 +81,17 @@
         height: 16px;
         background: var(--text);
         color: white;
-        font-size: 19px;
-        line-height: 17px;
+        font-size: 14px;
         border-radius: 50%;
         transition: transform 0.3s ease;
       }
 
       [data-theme="dark"] .theme-switch::before {
         transform: translateX(20px);
-        content: "☾";
+        content: "☼";
         color: black;
-        font-size: 14px;
+        font-size: 19px;
+        line-height: 17px;
       }
 
       #lang-toggle {
@@ -376,7 +376,7 @@
       <h3 id="subtitle">Projects</h3>
       <div class="theme-switch-wrapper">
         <div class="theme-switch" onclick="toggleTheme()"></div>
-        <button id="lang-toggle" onclick="toggleLanguage()">🇬🇧</button>
+        <button id="lang-toggle" onclick="toggleLanguage()">🇪🇸</button>
       </div>
     </header>
     
@@ -497,7 +497,7 @@
           "message": "Escribe tu mensaje aquí...",
           "message-send": "Envía",
           "footer-text": "© 2025 Alessandro Bigolin. Todos los derechos reservados.",
-          "lang-toggle": "🇪🇸"
+          "lang-toggle": "🇬🇧"
         }
       };
 
