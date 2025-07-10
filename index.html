@@ -33,18 +33,25 @@
         transition: background-color 0.3s, color 0.3s;
       }
 
-      header {
-        padding-top: 1rem;
-        text-align: center;
-        background: var(--card-bg);
-        border-bottom: 1px solid var(--border);
-        position: relative;
-      }
-
-      header h1 {
-        margin: 0;
-        font-size: 2rem;
-      }
+			.header-content {
+			  display: flex;
+			  justify-content: space-between;
+			  align-items: center;
+			  max-width: 900px;
+			  margin: 0 auto;
+			  padding: 1rem;
+			  flex-wrap: wrap;
+			}
+			
+			header h1 {
+			  margin: 0;
+			  font-size: 2rem;
+			}
+			
+			header h3 {
+			  margin: 0.5rem 0 0;
+			  opacity: 0.7;
+			}
 
       header p {
         margin-top: 0.5rem;
@@ -53,13 +60,11 @@
       }
 
       .theme-switch-wrapper {
-        position: absolute;
-        top: 4.4rem;
-        right: 1.5rem;
         display: flex;
         align-items: center;
         gap: 10px;
         z-index: 10;
+        align-self: flex-end;
       }
 
       .theme-switch {
@@ -82,6 +87,7 @@
         background: var(--text);
         color: white;
         font-size: 14px;
+        text-indent: 3px;
         border-radius: 50%;
         transition: transform 0.3s ease;
       }
@@ -92,6 +98,7 @@
         color: black;
         font-size: 19px;
         line-height: 17px;
+        text-indent: 2.5px;
       }
 
       #lang-toggle {
@@ -101,33 +108,45 @@
         cursor: pointer;
       }
 
-      .section-navbar {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        background: var(--card-bg);
-        border-bottom: 1px solid var(--border);
-        padding: 0.7rem 0;
-      }
+.section-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 1rem;
+}
 
-      .section-navbar button {
-        background: none;
-        border: none;
-        font-size: 1.1rem;
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        color: var(--text);
-        border-bottom: 2px solid transparent;
-        transition: border 0.3s;
-      }
+.navbar-buttons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-      .section-navbar button.active-tab {
-        border-bottom: 2px solid #9483a7;
-        font-weight: bold;
-      }
+.nav-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: var(--text);
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+  width: auto;
+}
+
+.nav-item button.active-tab {
+  border-bottom: 2px solid #9483a7;
+  font-weight: bold;
+}
 
       .sections-wrapper {
         position: relative;
@@ -365,25 +384,50 @@
     	.project-content p {
           text-align: left;
         }
+        
+        .navbar-buttons {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        
+        .nav-item {
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .nav-item button {
+          font-size: 1rem;
+        }
       }
       
     </style>
   </head>
   
   <body>
-    <header>
-      <h1 id="title">Your Name</h1>
-      <h3 id="subtitle">Projects</h3>
-      <div class="theme-switch-wrapper">
-        <div class="theme-switch" onclick="toggleTheme()"></div>
-        <button id="lang-toggle" onclick="toggleLanguage()">🇪🇸</button>
-      </div>
-    </header>
-    
-    <div class="section-navbar">
-      <button onclick="showSection('linguistics')" id="btn-linguistics" class="active-tab">Linguistics</button>
-      <button onclick="showSection('data-science')" id="btn-data-science">Data Science</button>
-    </div>
+		<header>
+		  <div class="header-content">
+		    <div>
+		      <h1 id="title">Your Name</h1>
+		      <h3 id="subtitle">Projects</h3>
+		    </div>
+		    <div class="theme-switch-wrapper">
+		      <div class="theme-switch" onclick="toggleTheme()"></div>
+		      <button id="lang-toggle" onclick="toggleLanguage()">🇪🇸</button>
+		    </div>
+		  </div>
+		</header>
+		    
+		<div class="section-navbar">
+		  <div class="navbar-buttons">
+		    <div class="nav-item">
+		      <button onclick="showSection('linguistics')" id="btn-linguistics" class="active-tab">Linguistics</button>
+		    </div>
+		    <div class="nav-item">
+		      <button onclick="showSection('data-science')" id="btn-data-science">Data Science</button>
+		    </div>
+		  </div>
+		</div>
     
     <div class="container">
       <div id="animated-wrapper">
