@@ -105,7 +105,7 @@
         background: transparent;
         border: none;
 				color: var(--text);
-        font-size: 1rem;
+        font-size: 0.9rem;
         cursor: pointer;
       }
 
@@ -626,6 +626,7 @@
       applyLanguage(savedLang);
 
       function showSection(section) {
+	      // Contract any expanded project cards when a navbar button is pressed
 				const expandedProjects = document.querySelectorAll('.project[data-expanded="true"]');
 				expandedProjects.forEach(projectCard => {
 					const moreText = projectCard.querySelector('.more-text');
@@ -655,6 +656,7 @@
 						}
 					});
 				});
+				
         const ling = document.getElementById('section-linguistics');
         const data = document.getElementById('section-data-science');
         const btnL = document.getElementById('btn-linguistics');
