@@ -626,6 +626,35 @@
       applyLanguage(savedLang);
 
       function showSection(section) {
+				const expandedProjects = document.querySelectorAll('.project[data-expanded="true"]');
+				expandedProjects.forEach(projectCard => {
+					const moreText = projectCard.querySelector('.more-text');
+					const button = projectCard.querySelector('.read-more-btn');
+					const lang = savedLang;
+			
+					// Remove the expanded attribute
+					projectCard.removeAttribute('data-expanded');
+			
+					// Animate collapse of moreText
+					const currentHeight = moreText.scrollHeight + "px";
+					moreText.style.height = currentHeight;
+			
+					// Force reflow
+					void moreText.offsetHeight;
+			
+					moreText.style.transition = 'height 0.3s ease';
+					moreText.style.height = '0px';
+			
+					// Update button text
+					button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
+			
+					moreText.addEventListener('transitionend', function handler(e) {
+						if (e.propertyName === 'height') {
+							moreText.style.transition = '';
+							moreText.removeEventListener('transitionend', handler);
+						}
+					});
+				});
         const ling = document.getElementById('section-linguistics');
         const data = document.getElementById('section-data-science');
         const btnL = document.getElementById('btn-linguistics');
