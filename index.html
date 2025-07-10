@@ -573,6 +573,7 @@
       }
 
     	function applyLanguage(lang) {
+				document.documentElement.lang = lang;
     	  if (lang === 'en') {
     		for (const id in originalTexts) {
     		  const el = document.getElementById(id);
