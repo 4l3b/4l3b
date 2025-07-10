@@ -54,7 +54,7 @@
 
       .theme-switch-wrapper {
         position: absolute;
-        top: 1.5rem;
+        top: 4.4rem;
         right: 1.5rem;
         display: flex;
         align-items: center;
@@ -260,12 +260,15 @@
         font-size: 1rem;
       }
 
-      .more-text {
-        display: none;
-        margin-top: 0.5rem;
-        color: var(--text);
-        opacity: 0.85;
-      }
+	  .more-text {
+  		overflow: hidden;
+  		height: 0;
+  		display: none;
+  		transition: height 0.3s ease;
+  		margin-top: 0.5rem;
+  		color: var(--text);
+  		opacity: 0.85;
+	  }
 
       .read-more-btn, .links {
         background: none;
@@ -365,7 +368,7 @@
   
   <body>
     <header>
-      <h1 id="title">Alessandro Bigolin</h1>
+      <h1 id="title">Your Name</h1>
       <h3 id="subtitle">Projects</h3>
       <div class="theme-switch-wrapper">
         <div class="theme-switch" onclick="toggleTheme()"></div>
@@ -521,52 +524,54 @@
         }
       }
 
-      function applyLanguage(lang) {
-        if (lang === 'en') {
-          for (const id in originalTexts) {
-            const el = document.getElementById(id);
-            if (el) {
-              if (id === "contact-desc") {
-                el.innerHTML = originalTexts[id];
-              } else {
-                el.innerText = originalTexts[id];
-              }
-            }
-          }
-          document.getElementById('email').placeholder = "your.email@example.com";
-
-          document.querySelectorAll('.read-more-btn').forEach(btn => {
-            const projectContent = btn.closest('.project-content');
-            const moreText = projectContent.querySelector('.more-text');
-            btn.textContent = (moreText.style.display === "block")
-              ? "Read less ▴"
-              : "Read more ▾";
-          });
-          return;
-        }
-        const langData = translations[lang];
-        for (const id in langData) {
-          const el = document.getElementById(id);
-          if (el) {
-            if (id === "contact-desc") {
-              el.innerHTML = langData[id];
-            } else {
-              el.innerText = langData[id];
-            }
-          }
-        }
-        if (langData['email-placeholder']) {
-          document.getElementById('email').placeholder = langData['email-placeholder'];
-        }
-
-        document.querySelectorAll('.read-more-btn').forEach(btn => {
-          const projectContent = btn.closest('.project-content');
-          const moreText = projectContent.querySelector('.more-text');
-          btn.textContent = (moreText.style.display === "block")
-            ? langData["read-less-btn"]
-            : langData["read-more-btn"];
-        });
-      }
+    	function applyLanguage(lang) {
+    	  if (lang === 'en') {
+    		for (const id in originalTexts) {
+    		  const el = document.getElementById(id);
+    		  if (el) {
+    			if (id === "contact-desc") {
+    			  el.innerHTML = originalTexts[id];
+    			} else {
+    			  el.innerText = originalTexts[id];
+    			}
+    		  }
+    		}
+    		document.getElementById('email').placeholder = "your.email@example.com";
+    	
+    		document.querySelectorAll('.read-more-btn').forEach(btn => {
+    		  const projectCard = btn.closest('.project');
+    		  const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
+    	
+    		  btn.textContent = isExpanded
+    			? "Read less ▴"
+    			: "Read more ▾";
+    		});
+    		return;
+    	  }
+    	  const langData = translations[lang];
+    	  for (const id in langData) {
+    		const el = document.getElementById(id);
+    		if (el) {
+    		  if (id === "contact-desc") {
+    			el.innerHTML = langData[id];
+    		  } else {
+    			el.innerText = langData[id];
+    		  }
+    		}
+    	  }
+    	  if (langData['email-placeholder']) {
+    		document.getElementById('email').placeholder = langData['email-placeholder'];
+    	  }
+    	
+    	  document.querySelectorAll('.read-more-btn').forEach(btn => {
+    		const projectCard = btn.closest('.project');
+    		const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
+    	
+    		btn.textContent = isExpanded
+    		  ? langData["read-less-btn"]
+    		  : langData["read-more-btn"];
+    	  });
+    	}    
       saveOriginalTexts();
       applyLanguage(savedLang);
 
@@ -641,38 +646,62 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll('.read-more-btn');
-
+      
         buttons.forEach(button => {
           button.addEventListener('click', () => {
-            const projectContent = button.closest('.project-content');
             const projectCard = button.closest('.project');
-            const moreText = projectContent.querySelector('.more-text');
+            const moreText = projectCard.querySelector('.more-text');
             const lang = savedLang;
-
-            // 1. Get current card height
-            const startHeight = projectCard.offsetHeight;
-
-            // 2. Toggle .more-text visibility (but keep it hidden for measurement)
-            const willExpand = moreText.style.display === "none" || moreText.style.display === "";
-            moreText.style.display = willExpand ? "block" : "none";
-
-            // 3. Force DOM update and get new height
-            const endHeight = projectCard.offsetHeight;
-
-            // 4. Set card to start height, then animate to end height
-            projectCard.style.height = startHeight + "px";
-            void projectCard.offsetWidth; // Force reflow
-            projectCard.style.height = endHeight + "px";
-
-            // 5. Update button text
-            button.textContent = lang === "es"
-              ? (willExpand ? translations.es["read-less-btn"] : translations.es["read-more-btn"])
-              : (willExpand ? "Read less ▴" : "Read more ▾");
-
-            // 6. After transition, reset height for natural resizing
-            setTimeout(() => {
-              projectCard.style.height = '';
-            }, 300);
+      
+            const isCollapsed = moreText.clientHeight === 0;
+      
+            if (isCollapsed) {
+              // espandi
+              projectCard.setAttribute('data-expanded', 'true');
+      
+              moreText.style.display = 'block';
+              const fullHeight = moreText.scrollHeight + "px";
+      
+              // forza il reflow per applicare altezza 0
+              void moreText.offsetHeight;
+      
+              // transizione all'altezza piena
+              moreText.style.transition = 'height 0.3s ease';
+              moreText.style.height = fullHeight;
+      
+              button.textContent = lang === "es" ? translations.es["read-less-btn"] : "Read less ▴";
+      
+              // dopo transizione puliamo
+              moreText.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'height') {
+                  moreText.style.height = 'auto'; // auto per gestire testo dinamico
+                  moreText.removeEventListener('transitionend', handler);
+                }
+              });
+            } else {
+              // collassa
+              projectCard.removeAttribute('data-expanded');
+      
+              const currentHeight = moreText.scrollHeight + "px";
+              moreText.style.height = currentHeight;
+      
+              // forza reflow
+              void moreText.offsetHeight;
+      
+              moreText.style.transition = 'height 0.3s ease';
+              moreText.style.height = '0px';
+      
+              button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
+      
+              moreText.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'height') {
+                  // NON mettiamo display:none
+                  // solo resettiamo transition e lasciamo height a 0
+                  moreText.style.transition = '';
+                  moreText.removeEventListener('transitionend', handler);
+                }
+              });
+            }
           });
         });
       });
