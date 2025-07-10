@@ -104,49 +104,50 @@
       #lang-toggle {
         background: transparent;
         border: none;
-        font-size: 1.2rem;
+				color: var(--text);
+        font-size: 1rem;
         cursor: pointer;
       }
 
-.section-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--border);
-  padding: 0.7rem 1rem;
-}
-
-.navbar-buttons {
-  display: flex;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.nav-item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-item button {
-  background: none;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  color: var(--text);
-  border-bottom: 2px solid transparent;
-  transition: border 0.3s;
-  width: auto;
-}
-
-.nav-item button.active-tab {
-  border-bottom: 2px solid #9483a7;
-  font-weight: bold;
-}
+			.section-navbar {
+			  position: sticky;
+			  top: 0;
+			  z-index: 100;
+			  background: var(--card-bg);
+			  border-bottom: 1px solid var(--border);
+			  padding: 0.7rem 1rem;
+			}
+			
+			.navbar-buttons {
+			  display: flex;
+			  justify-content: space-between;
+			  max-width: 900px;
+			  margin: 0 auto;
+			  width: 100%;
+			}
+			
+			.nav-item {
+			  flex: 1;
+			  display: flex;
+			  justify-content: center;
+			}
+			
+			.nav-item button {
+			  background: none;
+			  border: none;
+			  font-size: 1.1rem;
+			  cursor: pointer;
+			  padding: 0.5rem 1rem;
+			  color: var(--text);
+			  border-bottom: 2px solid transparent;
+			  transition: border 0.3s;
+			  width: auto;
+			}
+			
+			.nav-item button.active-tab {
+			  border-bottom: 2px solid #9483a7;
+			  font-weight: bold;
+			}
 
       .sections-wrapper {
         position: relative;
@@ -279,15 +280,15 @@
         font-size: 1rem;
       }
 
-	  .more-text {
-  		overflow: hidden;
-  		height: 0;
-  		display: none;
-  		transition: height 0.3s ease;
-  		margin-top: 0.5rem;
-  		color: var(--text);
-  		opacity: 0.85;
-	  }
+		  .more-text {
+	  		overflow: hidden;
+	  		height: 0;
+	  		display: none;
+	  		transition: height 0.3s ease;
+	  		margin-top: 0.5rem;
+	  		color: var(--text);
+	  		opacity: 0.85;
+		  }
 
       .read-more-btn, .links {
         background: none;
@@ -381,7 +382,7 @@
           text-align: center;
         }
         
-    	.project-content p {
+    	  .project-content p {
           text-align: left;
         }
         
@@ -413,7 +414,7 @@
 		    </div>
 		    <div class="theme-switch-wrapper">
 		      <div class="theme-switch" onclick="toggleTheme()"></div>
-		      <button id="lang-toggle" onclick="toggleLanguage()">🇪🇸</button>
+		      <button id="lang-toggle" onclick="toggleLanguage()">ES</button>
 		    </div>
 		  </div>
 		</header>
@@ -541,7 +542,7 @@
           "message": "Escribe tu mensaje aquí...",
           "message-send": "Envía",
           "footer-text": "© 2025 Alessandro Bigolin. Todos los derechos reservados.",
-          "lang-toggle": "🇬🇧"
+          "lang-toggle": "EN"
         }
       };
 
@@ -632,6 +633,15 @@
         const wrapper = document.getElementById('animated-wrapper');
         const body = document.body;
 
+				const isAlreadyActive =
+    			(section === 'linguistics' && btnL.classList.contains('active-tab')) ||
+    			(section === 'data-science' && btnD.classList.contains('active-tab'));
+
+  			if (isAlreadyActive) {
+    			window.scrollTo({ top: 0, behavior: 'smooth' });
+    			return;
+  			}
+
         // Toggle body class for color theme
         if (section === 'linguistics') {
           body.classList.add('linguistics-active');
@@ -687,7 +697,7 @@
             setTimeout(() => {
               newSection.style.visibility = '';
               newSection.style.position = '';
-              wrapper.style.height = ''; // remove inline height to allow natural growth
+              wrapper.style.height = '';
             }, 300);
           });
         });
@@ -705,36 +715,30 @@
             const isCollapsed = moreText.clientHeight === 0;
       
             if (isCollapsed) {
-              // espandi
               projectCard.setAttribute('data-expanded', 'true');
       
               moreText.style.display = 'block';
               const fullHeight = moreText.scrollHeight + "px";
       
-              // forza il reflow per applicare altezza 0
               void moreText.offsetHeight;
       
-              // transizione all'altezza piena
               moreText.style.transition = 'height 0.3s ease';
               moreText.style.height = fullHeight;
       
               button.textContent = lang === "es" ? translations.es["read-less-btn"] : "Read less ▴";
       
-              // dopo transizione puliamo
               moreText.addEventListener('transitionend', function handler(e) {
                 if (e.propertyName === 'height') {
-                  moreText.style.height = 'auto'; // auto per gestire testo dinamico
+                  moreText.style.height = 'auto';
                   moreText.removeEventListener('transitionend', handler);
                 }
               });
             } else {
-              // collassa
               projectCard.removeAttribute('data-expanded');
       
               const currentHeight = moreText.scrollHeight + "px";
               moreText.style.height = currentHeight;
       
-              // forza reflow
               void moreText.offsetHeight;
       
               moreText.style.transition = 'height 0.3s ease';
@@ -744,8 +748,6 @@
       
               moreText.addEventListener('transitionend', function handler(e) {
                 if (e.propertyName === 'height') {
-                  // NON mettiamo display:none
-                  // solo resettiamo transition e lasciamo height a 0
                   moreText.style.transition = '';
                   moreText.removeEventListener('transitionend', handler);
                 }
