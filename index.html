@@ -33,25 +33,25 @@
         transition: background-color 0.3s, color 0.3s;
       }
 
-			.header-content {
-			  display: flex;
-			  justify-content: space-between;
-			  align-items: center;
-			  max-width: 900px;
-			  margin: 0 auto;
-			  padding: 1rem;
-			  flex-wrap: wrap;
-			}
-			
-			header h1 {
-			  margin: 0;
-			  font-size: 1.7rem;
-			}
-			
-			header h3 {
-			  margin: 0.5rem 0 0;
-			  opacity: 0.7;
-			}
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.7rem;
+      }
+
+      header h3 {
+        margin: 0.5rem 0 0;
+        opacity: 0.7;
+      }
 
       header p {
         margin-top: 0.5rem;
@@ -104,51 +104,51 @@
       #lang-toggle {
         background: transparent;
         border: none;
-	width: 32px;
-	color: var(--text);
+        width: 32px;
+        color: var(--text);
         font-size: 0.9rem;
         cursor: pointer;
       }
 
-			.section-navbar {
-			  position: sticky;
-			  top: 0;
-			  z-index: 100;
-			  background: var(--card-bg);
-			  border-bottom: 1px solid var(--border);
-			  padding: 0.7rem 1rem;
-			}
-			
-			.navbar-buttons {
-			  display: flex;
-			  justify-content: space-between;
-			  max-width: 900px;
-			  margin: 0 auto;
-			  width: 100%;
-			}
-			
-			.nav-item {
-			  flex: 1;
-			  display: flex;
-			  justify-content: center;
-			}
-			
-			.nav-item button {
-			  background: none;
-			  border: none;
-			  font-size: 1.1rem;
-			  cursor: pointer;
-			  padding: 0.5rem 1rem;
-			  color: var(--text);
-			  border-bottom: 2px solid transparent;
-			  transition: border 0.3s;
-			  width: auto;
-			}
-			
-			.nav-item button.active-tab {
-			  border-bottom: 2px solid #9483a7;
-			  font-weight: bold;
-			}
+      .section-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0.7rem 1rem;
+      }
+
+      .navbar-buttons {
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .nav-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-item button {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        color: var(--text);
+        border-bottom: 2px solid transparent;
+        transition: border 0.3s;
+        width: auto;
+      }
+
+      .nav-item button.active-tab {
+        border-bottom: 2px solid #9483a7;
+        font-weight: bold;
+      }
 
       .sections-wrapper {
         position: relative;
@@ -170,7 +170,7 @@
         transition: opacity 0.4s ease, transform 0.4s ease;
         pointer-events: none;
       }
-      
+
       .section.show {
         opacity: 1;
         transform: translateY(0);
@@ -281,17 +281,18 @@
         font-size: 1rem;
       }
 
-		  .more-text {
-	  		overflow: hidden;
-	  		height: 0;
-	  		display: none;
-	  		transition: height 0.3s ease;
-	  		margin-top: 0.5rem;
-	  		color: var(--text);
-	  		opacity: 0.85;
-		  }
+      .more-text {
+        overflow: hidden;
+        height: 0;
+        display: none;
+        transition: height 0.3s ease;
+        margin-top: 0.5rem;
+        color: var(--text);
+        opacity: 0.85;
+      }
 
-      .read-more-btn, .links {
+      .read-more-btn,
+      .links {
         background: none;
         border: none;
         color: #9483a7;
@@ -382,54 +383,53 @@
         .project-content h2 {
           text-align: center;
         }
-        
-    	  .project-content p {
+
+        .project-content p {
           text-align: left;
         }
-        
+
         .navbar-buttons {
           flex-direction: row;
           align-items: center;
           gap: 0.5rem;
         }
-        
+
         .nav-item {
           width: auto;
           justify-content: center;
         }
-        
+
         .nav-item button {
           font-size: 1rem;
         }
       }
-      
     </style>
   </head>
   
   <body>
-		<header>
-		  <div class="header-content">
-		    <div>
-		      <h1 id="title">Your Name</h1>
-		      <h3 id="subtitle">Projects</h3>
-		    </div>
-		    <div class="theme-switch-wrapper">
-		      <div class="theme-switch" onclick="toggleTheme()"></div>
-		      <button id="lang-toggle" onclick="toggleLanguage()">ES</button>
-		    </div>
-		  </div>
-		</header>
-		    
-		<div class="section-navbar">
-		  <div class="navbar-buttons">
-		    <div class="nav-item">
-		      <button onclick="showSection('linguistics')" id="btn-linguistics" class="active-tab">Linguistics</button>
-		    </div>
-		    <div class="nav-item">
-		      <button onclick="showSection('data-science')" id="btn-data-science">Data Science</button>
-		    </div>
-		  </div>
-		</div>
+    <header>
+      <div class="header-content">
+        <div>
+          <h1 id="title">Your Name</h1>
+          <h3 id="subtitle">Projects</h3>
+        </div>
+        <div class="theme-switch-wrapper">
+          <div class="theme-switch" onclick="toggleTheme()"></div>
+          <button id="lang-toggle" onclick="toggleLanguage()">ES</button>
+        </div>
+      </div>
+    </header>
+    
+    <div class="section-navbar">
+      <div class="navbar-buttons">
+        <div class="nav-item">
+          <button onclick="showSection('linguistics')" id="btn-linguistics" class="active-tab">Linguistics</button>
+        </div>
+        <div class="nav-item">
+          <button onclick="showSection('data-science')" id="btn-data-science">Data Science</button>
+        </div>
+      </div>
+    </div>
     
     <div class="container">
       <div id="animated-wrapper">
@@ -441,12 +441,8 @@
               <img src="https://via.placeholder.com/150x100?text=Syntax" alt="Linguistics project">
               <div class="project-content">
                 <h2 id="project1-li-title">Syntax Tree Parser</h2>
-                <p id="project1-li-desc">
-                  A tool that visualizes syntactic trees based on user input. Built using Python and NLTK.
-                </p>
-                <p class="more-text" style="display: none;" id="project1-li-desc-more">
-                  This project allows linguists to input sentence structures and generates syntactic trees in visual format. It supports multiple treebanks and exports in SVG. Ideal for teaching and analysis.
-                </p>
+                <p id="project1-li-desc"> A tool that visualizes syntactic trees based on user input. Built using Python and NLTK. </p>
+                <p class="more-text" style="display: none;" id="project1-li-desc-more"> This project allows linguists to input sentence structures and generates syntactic trees in visual format. It supports multiple treebanks and exports in SVG. Ideal for teaching and analysis. </p>
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
                   <button class="read-more-btn">Read more ▾</button>
                   <a href="#" class="pill-link" id="project1-li-link">View on GitHub</a>
@@ -462,12 +458,11 @@
               <div class="project-content">
                 <h2 id="project1-ds-title">Predicting Housing Prices</h2>
                 <p id="project1-ds-desc">A regression model to predict housing prices using the Boston dataset. Explored feature importance and model evaluation.</p>
-                <p class="more-text" style="display: none;" id="project1-ds-desc-more">
-                  This project uses regression analysis to predict housing prices based on various features from the Boston dataset. It includes data exploration, feature engineering, and model evaluation.</p>
+                <p class="more-text" style="display: none;" id="project1-ds-desc-more"> This project uses regression analysis to predict housing prices based on various features from the Boston dataset. It includes data exploration, feature engineering, and model evaluation.</p>
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
                   <button class="read-more-btn">Read more ▾</button>
                   <a href="#" class="pill-link" id="project1-ds-link">View on GitHub</a>
-                </div>  
+                </div>
               </div>
             </div>
             
@@ -476,8 +471,7 @@
               <div class="project-content">
                 <h2 id="project2-ds-title">Customer Churn Analysis</h2>
                 <p id="project2-ds-desc">Analyzed churn patterns using logistic regression and visualizations. Improved retention strategies with data insights.</p>
-                <p class="more-text" style="display: none;" id="project2-ds-desc-more">
-                  This project analyzes customer churn patterns using logistic regression and visualizations. It provides insights to improve retention strategies based on data analysis.</p>
+                <p class="more-text" style="display: none;" id="project2-ds-desc-more"> This project analyzes customer churn patterns using logistic regression and visualizations. It provides insights to improve retention strategies based on data analysis.</p>
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
                   <button class="read-more-btn">Read more ▾</button>
                   <a href="#" class="pill-link" id="project2-ds-link">View on Flourish</a>
@@ -486,13 +480,12 @@
             </div>
             
           </div>
-          
         </div>
       </div>
       
       <div id="contact-section">
         <h2 id="contact-title">Contact me</h2>
-        <p id="contact-desc">If you’re interested in my work, feel free to check out my <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> profile or send me an email below.</p>
+        <p id="contact-desc">If you’re interested in my work, feel free to check out my <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> profile or send me an email below. </p>
         <form id="contact-form" action="https://formspree.io/f/tuo-id" method="POST">
           <label for="email" id="contact-form-email">Your Email</label>
           <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
@@ -501,7 +494,6 @@
           <button type="submit" class="pill-link" id="message-send">Send</button>
         </form>
       </div>
-      
     </div>
     
     <footer id="footer-text"> © 2025 Alessandro Bigolin. All rights reserved. </footer>
@@ -522,7 +514,7 @@
           "btn-contact": "Contacto",
           "read-more-btn": "Leer más ▾",
           "read-less-btn": "Leer menos ▴",
-          
+      
           "project1-li-title": "Analizador de Árboles Sintácticos",
           "project1-li-desc": "Una herramienta que visualiza árboles sintácticos basados en la entrada del usuario. Construida usando Python y NLTK.",
           "project1-li-desc-more": "Este proyecto permite a los lingüistas ingresar estructuras de oraciones y genera árboles sintácticos en formato visual. Soporta múltiples bancos de árboles y exporta en SVG. Ideal para enseñanza y análisis.",
@@ -546,143 +538,150 @@
           "lang-toggle": "EN"
         }
       };
-
+      
       function toggleTheme() {
         const current = root.getAttribute('data-theme');
         const newTheme = current === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
       }
-
+      
       function toggleLanguage() {
         savedLang = savedLang === 'en' ? 'es' : 'en';
         applyLanguage(savedLang);
         localStorage.setItem('lang', savedLang);
       }
       const originalTexts = {};
-
+      
       function saveOriginalTexts() {
         for (const id in translations.es) {
           const el = document.getElementById(id);
           if (el) {
             if (id === "contact-desc") {
               originalTexts[id] = el.innerHTML;
-            } else {
+            }
+            else {
               originalTexts[id] = el.innerText;
             }
           }
         }
       }
-
-    	function applyLanguage(lang) {
-				document.documentElement.lang = lang;
-    	  if (lang === 'en') {
-    		for (const id in originalTexts) {
-    		  const el = document.getElementById(id);
-    		  if (el) {
-    			if (id === "contact-desc") {
-    			  el.innerHTML = originalTexts[id];
-    			} else {
-    			  el.innerText = originalTexts[id];
-    			}
-    		  }
-    		}
-    		document.getElementById('email').placeholder = "your.email@example.com";
-    	
-    		document.querySelectorAll('.read-more-btn').forEach(btn => {
-    		  const projectCard = btn.closest('.project');
-    		  const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
-    	
-    		  btn.textContent = isExpanded
-    			? "Read less ▴"
-    			: "Read more ▾";
-    		});
-    		return;
-    	  }
-    	  const langData = translations[lang];
-    	  for (const id in langData) {
-    		const el = document.getElementById(id);
-    		if (el) {
-    		  if (id === "contact-desc") {
-    			el.innerHTML = langData[id];
-    		  } else {
-    			el.innerText = langData[id];
-    		  }
-    		}
-    	  }
-    	  if (langData['email-placeholder']) {
-    		document.getElementById('email').placeholder = langData['email-placeholder'];
-    	  }
-    	
-    	  document.querySelectorAll('.read-more-btn').forEach(btn => {
-    		const projectCard = btn.closest('.project');
-    		const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
-    	
-    		btn.textContent = isExpanded
-    		  ? langData["read-less-btn"]
-    		  : langData["read-more-btn"];
-    	  });
-    	}    
+      
+      function applyLanguage(lang) {
+        document.documentElement.lang = lang;
+        if (lang === 'en') {
+          for (const id in originalTexts) {
+            const el = document.getElementById(id);
+            if (el) {
+              if (id === "contact-desc") {
+                el.innerHTML = originalTexts[id];
+              }
+              else {
+                el.innerText = originalTexts[id];
+              }
+            }
+          }
+          document.getElementById('email').placeholder = "your.email@example.com";
+      
+          document.querySelectorAll('.read-more-btn').forEach(btn => {
+            const projectCard = btn.closest('.project');
+            const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
+      
+            btn.textContent = isExpanded ?
+              "Read less ▴" :
+              "Read more ▾";
+          });
+          return;
+        }
+        const langData = translations[lang];
+        for (const id in langData) {
+          const el = document.getElementById(id);
+          if (el) {
+            if (id === "contact-desc") {
+              el.innerHTML = langData[id];
+            }
+            else {
+              el.innerText = langData[id];
+            }
+          }
+        }
+        if (langData['email-placeholder']) {
+          document.getElementById('email').placeholder = langData['email-placeholder'];
+        }
+      
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+          const projectCard = btn.closest('.project');
+          const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
+      
+          btn.textContent = isExpanded ?
+            langData["read-less-btn"] :
+            langData["read-more-btn"];
+        });
+      }
       saveOriginalTexts();
       applyLanguage(savedLang);
-
+      
       function showSection(section) {
-	      // Contract any expanded project cards when a navbar button is pressed
-				const expandedProjects = document.querySelectorAll('.project[data-expanded="true"]');
-				expandedProjects.forEach(projectCard => {
-					const moreText = projectCard.querySelector('.more-text');
-					const button = projectCard.querySelector('.read-more-btn');
-					const lang = savedLang;
-			
-					// Remove the expanded attribute
-					projectCard.removeAttribute('data-expanded');
-			
-					// Animate collapse of moreText
-					const currentHeight = moreText.scrollHeight + "px";
-					moreText.style.height = currentHeight;
-			
-					// Force reflow
-					void moreText.offsetHeight;
-			
-					moreText.style.transition = 'height 0.3s ease';
-					moreText.style.height = '0px';
-			
-					// Update button text
-					button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
-			
-					moreText.addEventListener('transitionend', function handler(e) {
-						if (e.propertyName === 'height') {
-							moreText.style.transition = '';
-							moreText.removeEventListener('transitionend', handler);
-						}
-					});
-				});
-				
+        // Contract any expanded project cards when a navbar button is pressed
+        const expandedProjects = document.querySelectorAll('.project[data-expanded="true"]');
+        expandedProjects.forEach(projectCard => {
+          const moreText = projectCard.querySelector('.more-text');
+          const button = projectCard.querySelector('.read-more-btn');
+          const lang = savedLang;
+      
+          // Remove the expanded attribute
+          projectCard.removeAttribute('data-expanded');
+      
+          // Animate collapse of moreText
+          const currentHeight = moreText.scrollHeight + "px";
+          moreText.style.height = currentHeight;
+      
+          // Force reflow
+          void moreText.offsetHeight;
+      
+          moreText.style.transition = 'height 0.3s ease';
+          moreText.style.height = '0px';
+      
+          // Update button text
+          button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
+      
+          moreText.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'height') {
+              moreText.style.transition = '';
+              moreText.removeEventListener('transitionend', handler);
+            }
+          });
+        });
+      
         const ling = document.getElementById('section-linguistics');
         const data = document.getElementById('section-data-science');
         const btnL = document.getElementById('btn-linguistics');
         const btnD = document.getElementById('btn-data-science');
         const wrapper = document.getElementById('animated-wrapper');
         const body = document.body;
-
-				const isAlreadyActive =
-    			(section === 'linguistics' && btnL.classList.contains('active-tab')) ||
-    			(section === 'data-science' && btnD.classList.contains('active-tab'));
-
-  			if (isAlreadyActive) {
-    			window.scrollTo({ top: 0, behavior: 'smooth' });
-    			return;
-  			}
-
+      
+        const isAlreadyActive =
+          (section === 'linguistics' && btnL.classList.contains('active-tab')) ||
+          (section === 'data-science' && btnD.classList.contains('active-tab'));
+      
+        if (isAlreadyActive) {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
+      
         // Toggle body class for color theme
         if (section === 'linguistics') {
           body.classList.add('linguistics-active');
           body.classList.remove('data-science-active');
-        } else {
+        }
+        else {
           body.classList.add('data-science-active');
           body.classList.remove('linguistics-active');
         }
-
+      
         // Save current height
         const startHeight = wrapper.offsetHeight;
       
@@ -701,7 +700,8 @@
             ling.classList.remove('hide-left', 'hide-right');
             data.classList.remove('hide-left');
             data.classList.add('hide-right');
-          } else {
+          }
+          else {
             newSection = data;
             btnD.classList.add('active-tab');
             btnL.classList.remove('active-tab');
@@ -721,10 +721,10 @@
       
           // Set wrapper height to trigger transition
           wrapper.style.height = startHeight + 'px';
-          
+      
           requestAnimationFrame(() => {
             wrapper.style.height = endHeight + 'px';
-            
+      
             // Clean up temporary styles after transition ends
             setTimeout(() => {
               newSection.style.visibility = '';
@@ -734,8 +734,8 @@
           });
         });
       }
-
-      document.addEventListener("DOMContentLoaded", function () {
+      
+      document.addEventListener("DOMContentLoaded", function() {
         const buttons = document.querySelectorAll('.read-more-btn');
       
         buttons.forEach(button => {
@@ -765,7 +765,8 @@
                   moreText.removeEventListener('transitionend', handler);
                 }
               });
-            } else {
+            }
+            else {
               projectCard.removeAttribute('data-expanded');
       
               const currentHeight = moreText.scrollHeight + "px";
@@ -788,9 +789,6 @@
           });
         });
       });
-
     </script>
-    
   </body>
-  
 </html>
