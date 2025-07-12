@@ -197,6 +197,8 @@
       .project {
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: center;
         gap: 1.5rem;
         padding: 1.5rem;
         margin-bottom: 0.5rem;
@@ -266,6 +268,18 @@
 
       body.data-science-active .links {
         color: #83a794 !important;
+      }
+
+      .read-more-view-on {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .read-more-btn {
+        top: -3px;
+        position: relative;
       }
 
       .pill-link {
@@ -438,14 +452,16 @@
           <div id="section-linguistics" class="section show">
             <!-- Linguistics content -->
             <div class="project">
-              <img src="https://via.placeholder.com/150x100?text=Syntax" alt="Linguistics project">
+              <a href="/Users/alessandro93/Documents/Progetti/Portfolio_website/imgs/project1-li-img.png" target="_blank" rel="noopener noreferrer">
+                <img src="/Users/alessandro93/Documents/Progetti/Portfolio_website/imgs/project1-li-img.png" alt="Slavic creation/consumption predicates in light of Talmy’s typology">
+              </a>
               <div class="project-content">
-                <h2 id="project1-li-title">Syntax Tree Parser</h2>
-                <p id="project1-li-desc"> A tool that visualizes syntactic trees based on user input. Built using Python and NLTK. </p>
-                <p class="more-text" style="display: none;" id="project1-li-desc-more"> This project allows linguists to input sentence structures and generates syntactic trees in visual format. It supports multiple treebanks and exports in SVG. Ideal for teaching and analysis. </p>
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                <h2 id="project1-li-title">Slavic creation/consumption predicates in light of Talmy’s typology</h2>
+                <p id="project1-li-desc">Book chapter published in Berit Gehrke, Denisa Lenertová, Roland Meyer, Daria Seres, Luka Szucsich & Joanna Zaleska (eds.). 2025. Advances in formal Slavic linguistics 2022, 33–74. Berlin: Language Science Press. </p>
+                <p class="more-text" id="project1-li-desc-more"> In this book chapter, based on a presentation at the 15th European Conference on Formal Description of Slavic Languages, I explore how Slavic languages talk about actions like creating or consuming things. According to a well-known linguistic classification, languages tend to follow certain patterns in how they describe events. Slavic languages are usually thought to belong to one group (called satellite-framed), but I show that when it comes to creation and consumption, they actually behave more like another group (verb-framed). I ran a study to test this idea and found supporting evidence. Building on this, I offer a new explanation for how these patterns might work in the grammar of Slavic languages and beyond. </p>
+                <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
-                  <a href="#" class="pill-link" id="project1-li-link">View on GitHub</a>
+                  <a href="https://doi.org/10.5281/zenodo.15394164" class="pill-link" id="project1-li-link">View article</a>
                 </div>
               </div>
             </div>
@@ -458,8 +474,8 @@
               <div class="project-content">
                 <h2 id="project1-ds-title">Predicting Housing Prices</h2>
                 <p id="project1-ds-desc">A regression model to predict housing prices using the Boston dataset. Explored feature importance and model evaluation.</p>
-                <p class="more-text" style="display: none;" id="project1-ds-desc-more"> This project uses regression analysis to predict housing prices based on various features from the Boston dataset. It includes data exploration, feature engineering, and model evaluation.</p>
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p class="more-text" id="project1-ds-desc-more"> This project uses regression analysis to predict housing prices based on various features from the Boston dataset. It includes data exploration, feature engineering, and model evaluation.</p>
+                <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                   <a href="#" class="pill-link" id="project1-ds-link">View on GitHub</a>
                 </div>
@@ -471,8 +487,8 @@
               <div class="project-content">
                 <h2 id="project2-ds-title">Customer Churn Analysis</h2>
                 <p id="project2-ds-desc">Analyzed churn patterns using logistic regression and visualizations. Improved retention strategies with data insights.</p>
-                <p class="more-text" style="display: none;" id="project2-ds-desc-more"> This project analyzes customer churn patterns using logistic regression and visualizations. It provides insights to improve retention strategies based on data analysis.</p>
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+                <p class="more-text" id="project2-ds-desc-more"> This project analyzes customer churn patterns using logistic regression and visualizations. It provides insights to improve retention strategies based on data analysis.</p>
+                <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                   <a href="#" class="pill-link" id="project2-ds-link">View on Flourish</a>
                 </div>
@@ -515,10 +531,10 @@
           "read-more-btn": "Leer más ▾",
           "read-less-btn": "Leer menos ▴",
       
-          "project1-li-title": "Analizador de Árboles Sintácticos",
-          "project1-li-desc": "Una herramienta que visualiza árboles sintácticos basados en la entrada del usuario. Construida usando Python y NLTK.",
-          "project1-li-desc-more": "Este proyecto permite a los lingüistas ingresar estructuras de oraciones y genera árboles sintácticos en formato visual. Soporta múltiples bancos de árboles y exporta en SVG. Ideal para enseñanza y análisis.",
-          "project1-li-link": "Ver en GitHub",
+          "project1-li-title": "Slavic creation/consumption predicates in light of Talmy’s typology",
+          "project1-li-desc": "Capítulo de libro publicado en Berit Gehrke, Denisa Lenertová, Roland Meyer, Daria Seres, Luka Szucsich & Joanna Zaleska (eds.). 2025. Advances in formal Slavic linguistics 2022, 33–74. Berlín: Language Science Press.",
+          "project1-li-desc-more": "En este capítulo de libro, basado en una presentación en la 15th European Conference on Formal Description of Slavic Languages, exploro cómo los idiomas eslavos expresan acciones como crear o consumir cosas. Según una clasificación lingüística bien conocida, los idiomas tienden a seguir ciertos patrones en la manera en que describen eventos. Los idiomas eslavos suelen considerarse parte de un grupo (llamado de marco satélite), pero demuestro que, cuando se trata de creación y consumo, en realidad se comportan más como otro grupo (de marco verbal). Realicé un estudio para poner a prueba esta idea y encontré evidencia que la respalda. A partir de esto, propongo una nueva explicación sobre cómo podrían funcionar estos patrones en la gramática de las lenguas eslavas y más allá.",
+          "project1-li-link": "Ver artículo",
           "project1-ds-title": "Predicción de Precios de Vivienda",
           "project1-ds-desc": "Un modelo de regresión para predecir precios de vivienda usando el conjunto de datos de Boston. Exploración de características y evaluación del modelo.",
           "project1-ds-desc-more": "Este proyecto utiliza análisis de regresión para predecir precios de vivienda basados en varias características del conjunto de datos de Boston. Incluye exploración de datos, ingeniería de características y evaluación del modelo.",
@@ -640,6 +656,10 @@
           void moreText.offsetHeight;
       
           moreText.style.transition = 'height 0.3s ease';
+          moreText.style.paddingTop = '0';
+          moreText.style.paddingBottom = '0';
+          moreText.style.marginTop = '0';
+          moreText.style.marginBottom = '0';
           moreText.style.height = '0px';
       
           // Update button text
@@ -648,6 +668,8 @@
           moreText.addEventListener('transitionend', function handler(e) {
             if (e.propertyName === 'height') {
               moreText.style.transition = '';
+              moreText.style.display = 'none';
+              moreText.style.marginBottom = '1rem';
               moreText.removeEventListener('transitionend', handler);
             }
           });
@@ -768,20 +790,28 @@
             }
             else {
               projectCard.removeAttribute('data-expanded');
-      
+
               const currentHeight = moreText.scrollHeight + "px";
               moreText.style.height = currentHeight;
-      
+
               void moreText.offsetHeight;
-      
+
               moreText.style.transition = 'height 0.3s ease';
+              
+              moreText.style.paddingTop = '0';
+              moreText.style.paddingBottom = '0';
+              moreText.style.marginTop = '0';
+              moreText.style.marginBottom = '0';
+
               moreText.style.height = '0px';
-      
+
               button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
-      
+
               moreText.addEventListener('transitionend', function handler(e) {
                 if (e.propertyName === 'height') {
                   moreText.style.transition = '';
+                  moreText.style.display = 'none';
+                  moreText.style.marginBottom = '1rem';
                   moreText.removeEventListener('transitionend', handler);
                 }
               });
