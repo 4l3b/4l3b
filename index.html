@@ -197,7 +197,6 @@
       .project {
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
         gap: 1.5rem;
         padding: 1.5rem;
@@ -449,24 +448,37 @@
       <div id="animated-wrapper">
         <div id="sections-wrapper" class="sections-wrapper">
         
+          <!-- Linguistics content -->
           <div id="section-linguistics" class="section show">
-            <!-- Linguistics content -->
             <div class="project">
-              <img src="./imgs/project1-li-img.png" alt="Slavic creation/consumption predicates in light of Talmy’s typology">
+              <img src="./imgs/project1-li-img.png" alt="Slavic creation/consumption predicates in light of Talmy’s typology" style="width: 100%; height: auto; object-fit: contain;">
               <div class="project-content">
                 <h2 id="project1-li-title">Slavic creation/consumption predicates in light of Talmy’s typology</h2>
                 <p id="project1-li-desc">Book chapter published in Berit Gehrke, Denisa Lenertová, Roland Meyer, Daria Seres, Luka Szucsich & Joanna Zaleska (eds.). 2025. Advances in formal Slavic linguistics 2022, 33–74. Berlin: Language Science Press. </p>
                 <p class="more-text" id="project1-li-desc-more"> In this book chapter, based on a presentation at the 15th European Conference on Formal Description of Slavic Languages, I explore how Slavic languages talk about actions like creating or consuming things. According to a well-known linguistic classification, languages tend to follow certain patterns in how they describe events. Slavic languages are usually thought to belong to one group (called satellite-framed), but I show that when it comes to creation and consumption, they actually behave more like another group (verb-framed). I ran a study to test this idea and found supporting evidence. Building on this, I offer a new explanation for how these patterns might work in the grammar of Slavic languages and beyond. </p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
-                  <a href="https://doi.org/10.5281/zenodo.15394164" class="pill-link" id="project1-li-link">View article</a>
+                  <a href="https://doi.org/10.5281/zenodo.15394164" class="pill-link" id="project1-li-link" target="_blank" rel="noopener noreferrer">View article</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="./imgs/project2-li-img.png" alt="The syntax of argument structure. Elements for a configurational theory" style="width: 100%; height: auto; object-fit: contain;">
+              <div class="project-content">
+                <h2 id="project2-li-title">The syntax of argument structure. Elements for a configurational theory</h2>
+                <p id="project2-li-desc">Here is the link to my PhD thesis, defended on 27 September 2024 at the Universitat Autònoma de Barcelona. </p>
+                <p class="more-text" id="project2-li-desc-more"> In my PhD thesis, I explored how verbs and their meanings are built in our minds. I focused on how predicate structure shapes whether a predicate feels like a state or an event. Building on previous literature, I argue that this difference doesn’t come from the meaning of the verb itself, but from how its elements are arranged in syntax. I introduce a basic, abstract building block (just one kind of syntactic head) that can combine in different ways and, depending on the structure, gives rise to different types of meaning. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="http://hdl.handle.net/10803/692728" class="pill-link" id="project2-li-link" target="_blank" rel="noopener noreferrer">View thesis</a>
                 </div>
               </div>
             </div>
           </div>
           
+          <!-- Data Science content -->
           <div id="section-data-science" class="section hide-right">
-            <!-- Data Science content -->
             <div class="project">
               <img src="https://via.placeholder.com/150x100?text=Project+1" alt="Project 1 thumbnail">
               <div class="project-content">
@@ -533,14 +545,22 @@
           "project1-li-desc": "Capítulo de libro publicado en Berit Gehrke, Denisa Lenertová, Roland Meyer, Daria Seres, Luka Szucsich & Joanna Zaleska (eds.). 2025. Advances in formal Slavic linguistics 2022, 33–74. Berlín: Language Science Press.",
           "project1-li-desc-more": "En este capítulo de libro, basado en una presentación en la 15th European Conference on Formal Description of Slavic Languages, exploro cómo los idiomas eslavos expresan acciones como crear o consumir cosas. Según una clasificación lingüística bien conocida, los idiomas tienden a seguir ciertos patrones en la manera en que describen eventos. Los idiomas eslavos suelen considerarse parte de un grupo (llamado de marco satélite), pero demuestro que, cuando se trata de creación y consumo, en realidad se comportan más como otro grupo (de marco verbal). Realicé un estudio para poner a prueba esta idea y encontré evidencia que la respalda. A partir de esto, propongo una nueva explicación sobre cómo podrían funcionar estos patrones en la gramática de las lenguas eslavas y más allá.",
           "project1-li-link": "Ver artículo",
+
+          "project2-li-title": "La sintaxis de la estructura argumental. Elementos para una teoría configuracional",
+          "project2-li-desc": "Aquí está el enlace a mi tesis doctoral, defendida el 27 de septiembre de 2024 en la Universitat Autònoma de Barcelona.",
+          "project2-li-desc-more": "En mi tesis doctoral, exploré cómo se construyen en nuestra mente los verbos y sus significados. Me centré en cómo la estructura del predicado influye en si un predicado se siente como un estado o un evento. Basándome en la literatura previa, argumento que esta diferencia no proviene del significado del verbo en sí, sino de cómo sus elementos están organizados en la sintaxis. Introduzco un bloque de construcción básico y abstracto (un tipo de nucleo sintáctico) que puede combinarse de diferentes maneras. Dependiendo de esta estructura, obtenemos diferentes tipos de significado.",
+          "project2-li-link": "Ver tesis",
+
           "project1-ds-title": "Predicción de Precios de Vivienda",
           "project1-ds-desc": "Un modelo de regresión para predecir precios de vivienda usando el conjunto de datos de Boston. Exploración de características y evaluación del modelo.",
           "project1-ds-desc-more": "Este proyecto utiliza análisis de regresión para predecir precios de vivienda basados en varias características del conjunto de datos de Boston. Incluye exploración de datos, ingeniería de características y evaluación del modelo.",
           "project1-ds-link": "Ver en GitHub",
+
           "project2-ds-title": "Análisis de Abandono de Clientes",
           "project2-ds-desc": "Análisis de patrones de abandono usando regresión logística y visualizaciones. Mejora de estrategias de retención con insights.",
           "project2-ds-desc-more": "Este proyecto analiza patrones de abandono de clientes usando regresión logística y visualizaciones. Proporciona insights para mejorar estrategias de retención basadas en análisis de datos.",
           "project2-ds-link": "Ver en Flourish",
+
           "contact-title": "Contáctame",
           "contact-desc": 'Si te interesa mi trabajo, no dudes en visitar mi perfil de <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> o enviarme un correo electrónico aquí abajo.',
           "contact-form-email": "Tu correo",
