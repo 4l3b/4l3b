@@ -203,7 +203,7 @@
         margin-bottom: 0.5rem;
         background: var(--card-bg);
         border-radius: 8px;
-	border: 0.5px solid var(--border);
+ 	border: 0.5px solid var(--border);
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         overflow: hidden;
@@ -294,13 +294,13 @@
         cursor: pointer;
         font-size: 1rem;
       }
-
-      .app-buttons-wrapper {
-  		  display: flex;
-  		  gap: 6px;
-  		  align-items: center;
-	    }
       
+      .app-buttons-wrapper {
+  	display: flex;
+  	gap: 6px;
+  	align-items: center;
+      }
+
       .more-text {
         overflow: hidden;
         height: 0;
@@ -487,11 +487,25 @@
               <img src="./imgs/project3-li-img.png" alt="Hybrid subjects in Spanish and Catalan. Halfway between agents and patients." style="width: 100%; height: auto; object-fit: contain;">
               <div class="project-content">
                 <h2 id="project3-li-title">Hybrid subjects in Spanish and Catalan. Halfway between agents and patients. </h2>
-                <p id="project3-li-desc">Joint work with Josep Ausensi, published in Glossa: a journal of general linguistics 9(1). </p>
+                <p id="project3-li-desc">Joint work with Josep Ausensi, published in Glossa: a journal of general linguistics 9.1 (2024). </p>
                 <p class="more-text" id="project3-li-desc-more"> In this project, we study a special kind of verb construction in Spanish and Catalan, like the verb matarse (“to kill oneself”), where the subject seems to act both as the doer and the receiver of the action. For example, in “Juan se mató en un accidente de coche,” Juan is both involved in causing and experiencing the accident. We propose that this happens because the subject carries two different semantic roles at once, linked to different parts of the sentence structure. Even though these verbs look similar on the surface to other reflexive verbs, they actually have a different underlying grammar. This shows that the usual idea of agents and external arguments doesn’t always apply, highlighting how language can express complex participant roles. </p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                   <a href="https://doi.org/10.16995/glossa.10710" class="pill-link" id="project3-li-link" target="_blank" rel="noopener noreferrer">View article</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project">
+              <img src="./imgs/project4-li-img.png" alt="On the argument structure realization of result verbs. A syntactic approach." style="width: 100%; height: auto; object-fit: contain;">
+              <div class="project-content">
+                <h2 id="project4-li-title">On the argument structure realization of result verbs. A syntactic approach. </h2>
+                <p id="project4-li-desc">Joint work with Josep Ausensi, published in Acta Linguistica Academica 70.1 (2023). </p>
+                <p class="more-text" id="project4-li-desc-more"> In this study, we explored how different types of action verbs (namely manner verbs, that describe the way something happens, versus result verbs, that focus on the result of an event of change) influence whether the object of the action needs to be expressed in the predicate. An influential idea in the literature on argument structure and lexical semantics holds that result verbs always require an overt direct object, because they show what changes about it. In contrast, manner verbs can often leave their object out. However, we present new examples from English where predicates with result verbs either don’t express the undergoer of the action named by the verb as a direct object or do not include it at all. Our findings suggest that verb meaning and predicate construction work together more flexibly than standardly thought, in line with the neo-constructionist perspective on argument structure and event structure. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="https://doi.org/10.1556/2062.2023.00567" class="pill-link" id="project4-li-link" target="_blank" rel="noopener noreferrer">View article</a>
                 </div>
               </div>
             </div>
@@ -517,7 +531,7 @@
               <div class="project-content">
                 <h2 id="project2-ds-title">WorkTrack</h2>
                 <p id="project2-ds-desc">A web app that keeps track of your workday, showing your expected clock-out time and the time remaining to work.</p>
-                <p class="more-text" id="project2-ds-desc-more"> WorkTrack is a browser-based tool for tracking your daily work sessions. It allows you to enter your clock-in time, total work duration, and break details, and then calculates your expected clock-out time and the time remaining in your workday. You can track breaks using either a preset duration or actual start and end times. The app adjusts your expected clock-out time accordingly, and supports ending a session early or continuing into overtime, with automatic recalculations in both cases. Session data is stored locally in the browser, so your current session will persist even if you close or refresh the tab. You can download a JSON log of your work history, upload a previous log, or clear all stored data as needed. WorkTrack is available both as a desktop version and a mobile version optimized to be installed as a Progressive Web App (PWA), enabling quick access and offline functionality. The interface is styled to resemble the look of the McDonnell Douglas MD-11 Flight Management Computer screen, a design inspired by the best aircraft ever. </p>
+                <p class="more-text" id="project2-ds-desc-more">WorkTrack is a browser-based tool for tracking your daily work sessions. It allows you to enter your clock-in time, total work duration, and break details, and then calculates your expected clock-out time and the time remaining in your workday. You can track breaks using either a preset duration or actual start and end times. The app adjusts your expected clock-out time accordingly, and supports ending a session early or continuing into overtime, with automatic recalculations in both cases. Session data is stored locally in the browser, so your current session will persist even if you close or refresh the tab. You can download a JSON log of your work history, upload a previous log, or clear all stored data as needed. WorkTrack is available both as a desktop version and a mobile version optimized to be installed as a Progressive Web App (PWA), enabling quick access and offline functionality. The interface is styled to resemble the look of the McDonnell Douglas MD-11 Flight Management Computer screen, a design inspired by the best aircraft ever.</p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                   <div class="app-buttons-wrapper">
@@ -527,8 +541,8 @@
                 </div>
               </div>
             </div>
-
-	    <div class="project">
+            
+            <div class="project">
               <img src="./imgs/project3-ds-img.png" alt="WorkTrack time logs analysis">
               <div class="project-content">
                 <h2 id="project3-ds-title">Work time logs analysis and classification model</h2>
@@ -540,8 +554,8 @@
                 </div>
               </div>
             </div>
-
-	    <div class="project">
+            
+            <div class="project">
               <img src="./imgs/project4-ds-img.png" alt="Giro d'Italia 2025 Rankings Presentation">
               <div class="project-content">
                 <h2 id="project4-ds-title">Visualizing Giro d’Italia 2025 Rankings Using Web Scraping and Tableau</h2>
@@ -553,7 +567,7 @@
                 </div>
               </div>
             </div>
-		  
+            
           </div>
         </div>
       </div>
@@ -601,9 +615,14 @@
           "project2-li-link": "Ver tesis",
 
           "project3-li-title": "Sujetos híbridos en español y catalán. Entre agentes y pacientes.",
-          "project3-li-desc": "Trabajo conjunto con Josep Ausensi, publicado en Glossa: a journal of general linguistics 9(1).",
+          "project3-li-desc": "Trabajo conjunto con Josep Ausensi, publicado en Glossa: a journal of general linguistics 9.1 (2024).",
           "project3-li-desc-more": "En este proyecto estudiamos un tipo especial de construcción verbal en español y catalan, como el verbo matarse, donde el sujeto parece actuar tanto como quien realiza la acción como quien la recibe. Por ejemplo, en “Juan se mató en un accidente de coche,” Juan está involucrado tanto en causar como en experimentar el accidente. Proponemos que esto ocurre porque el sujeto lleva dos roles semánticos diferentes a la vez, vinculados a distintas partes de la estructura de la oración. Aunque estos verbos se parecen en la superficie a otros verbos reflexivos, en realidad tienen una gramática subyacente distinta. Esto muestra que la idea habitual de agentes y argumentos externos no siempre se aplica, evidenciando cómo el lenguaje puede expresar roles complejos de los participantes.",
           "project3-li-link": "Ver artículo",
+          
+          "project4-li-title": "Sobre la realización de la estructura argumental de los verbos de resultado. Un enfoque sintáctico.",
+          "project4-li-desc": "Trabajo conjunto con Josep Ausensi, publicado en Acta Linguistica Academica 70.1 (2023).",
+          "project4-li-desc-more": "En este estudio, exploramos cómo diferentes tipos de verbos de acción (específicamente los verbos de modo, que describen cómo ocurre algo, y los verbos de resultado, que se centran en el resultado de un evento de cambio de estado) influyen en si el objeto de la acción debe expresarse en el predicado. Una idea influyente en la literatura sobre estructura argumental y semántica léxica sostiene que los verbos de resultado siempre requieren un objeto directo explícito, porque indican qué es lo que cambia del objeto. En cambio, los verbos de modo suelen poder omitir su objeto. Sin embargo, presentamos nuevos ejemplos en inglés donde los predicados con verbos de resultado o bien no expresan al receptor de la acción como objeto directo, o directamente no lo incluyen. Nuestros hallazgos sugieren que el significado del verbo y la construcción del predicado trabajan juntos con más flexibilidad de lo que se piensa, en línea con la perspectiva neo-construccionista sobre estructura argumental y estructura del evento.",
+          "project4-li-link": "Ver artículo",
 
           "project1-ds-title": "Monitoreo de fiebre",
           "project1-ds-desc": "Notebook en Python que permite registrar y visualizar de forma interactiva la evolución de la fiebre, incluyendo temperaturas y administración de paracetamol.",
@@ -615,17 +634,17 @@
           "project2-ds-desc-more": "WorkTrack es una herramienta basada en navegador para registrar y gestionar tus jornadas laborales. Permite ingresar la hora de entrada, la duración total del trabajo y los detalles de las pausas, y luego calcula automáticamente la hora estimada de salida y el tiempo restante de trabajo. Puedes registrar las pausas usando una duración predefinida o ingresando manualmente la hora de inicio y fin. La aplicación ajusta la hora de salida en función de estos datos, y también permite finalizar la sesión antes de tiempo o continuar en horas extra, actualizando los cálculos en consecuencia. Los datos de la sesión se almacenan localmente en el navegador, por lo que tu sesión actual se conservará incluso si cierras o recargas la pestaña. También puedes descargar un archivo JSON con el historial de tus sesiones, subir uno anterior o borrar todos los datos almacenados si lo deseas. WorkTrack está disponible tanto en versión de escritorio como en versión móvil, optimizada para ser instalada como una Aplicación Web Progresiva (PWA), lo que permite un acceso rápido y funcionalidad sin conexión. La interfaz está inspirada en el estilo del Flight Management Computer del McDonnell Douglas MD-11, el mejor avión de todos los tiempos.",
           "project2-ds-link": "App Desktop",
           "project2-ds-pwa-link": "App PWA",
-
-	  "project3-ds-title": "Análisis de registros de tiempo laboral y modelo de clasificación",
+          
+          "project3-ds-title": "Análisis de registros de tiempo laboral y modelo de clasificación",
           "project3-ds-desc": "Análisis de registros de tiempo de trabajo recogidos con la app WorkTrack, identificando patrones y valores atípicos. Creación de un modelo de clasificación para predecir eventos de entrada, inicio y fin de pausa, y salida, basado en los datos extraídos de los registros de tiempo de trabajo.",
           "project3-ds-desc-more": "En este proyecto analicé un año de registros diarios de tiempo de trabajo recogidos con mi aplicación WorkTrack. Uní dos archivos JSON exportados en un solo dataframe y realicé un análisis estadístico para descubrir patrones, distribuciones y comportamientos atípicos. Luego, desarrollé un modelo de clasificación que, según la hora del día, predice si el evento es una entrada, el inicio o fin de una pausa, o la salida. Este notebook en Python es tanto un ejercicio práctico de técnicas de ciencia de datos como una aplicación de inteligencia artificial con datos reales de usuarios.",
           "project3-ds-link": "Ver en Colab",
-
-	  "project4-ds-title": "Visualización de las Clasificaciones del Giro de Italia 2025 con Web Scraping y Tableau",
+          
+          "project4-ds-title": "Visualización de las Clasificaciones del Giro de Italia 2025 con Web Scraping y Tableau",
           "project4-ds-desc": "En este proyecto, recopilé y limpié los datos de las clasificaciones del Giro de Italia 2025 y los visualicé mediante una Story de Tableau.",
           "project4-ds-desc-more": "Los datos, centrados en las clasificaciones General, de Puntos y de Montaña, fueron extraídos mediante web scraping. Después de limpiarlos y organizarlos en archivos CSV, los importé a Tableau Public y creé una Story para mostrar a los cinco mejores corredores en cada clasificación. Para la clasificación General, donde las posiciones se basan en el tiempo acumulado, invertí los valores de la diferencia de tiempo para que la visualización fuera significativa; de lo contrario, el líder de la carrera aparecería con la barra más corta. El resultado es un conjunto de visualizaciones que van más allá de las posiciones, ayudando a entender inmediatamente la escala de las diferencias entre los atletas en las clasificaciones finales.",
           "project4-ds-link": "Ver en Colab",
-	
+
           "contact-title": "Contáctame",
           "contact-desc": 'Si te interesa mi trabajo, no dudes en visitar mi perfil de <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> o enviarme un correo electrónico aquí abajo.',
           "contact-form-email": "Tu correo",
