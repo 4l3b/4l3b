@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Name</title>
+    <style>
+      :root {
+        --bg: #E6E8EB;      /* #f2f4f6 */
+        --text: #1f2328;
+        --card-bg: #F5F7FA; /* #ffffff */
+        --border: #c7ccd1;
+        --link: #0077cc;
+      }
+
+      [data-theme="dark"] {
+        --bg: #23252a;      /* #1e1e1e */
+        --text: #aab0bc;
+        --card-bg: #282c33; /* #2b2b2b */
+        --border: #444;
+        --link: #66b2ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.7rem;
+      }
+
+      header h3 {
+        margin: 0.5rem 0 0;
+        opacity: 0.7;
+      }
+
+      header p {
+        margin-top: 0.5rem;
+        color: var(--text);
+        opacity: 0.7;
+      }
+
+      .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        z-index: 10;
+        align-self: flex-end;
+      }
+
+      .theme-switch {
+        position: relative;
+        width: 29px;
+        height: 18px;
+        background: var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .theme-switch::before {
+        content: "☾";
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        width: 16px;
+        height: 16px;
+        background: var(--text);
+        color: white;
+        font-size: 14px;
+        text-indent: 3px;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+      }
+
+      [data-theme="dark"] .theme-switch::before {
+        transform: translateX(11px);
+        content: "☼";
+        color: black;
+        font-size: 19px;
+        line-height: 17px;
+        text-indent: 2.5px;
+      }
+
+      #lang-toggle {
+        background: transparent;
+        border: none;
+        width: 32px;
+        color: var(--text);
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .section-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0.7rem 1rem;
+      }
+
+      .navbar-buttons {
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .nav-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-item button {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        color: var(--text);
+        border-bottom: 2px solid transparent;
+        transition: border 0.3s;
+        width: auto;
+      }
+
+      .nav-item button.active-tab {
+        border-bottom: 2px solid #9483a7;
+        font-weight: bold;
+      }
+
+      .sections-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      #animated-wrapper {
+        transition: height 0.3s ease;
+        overflow: hidden;
+      }
+
+      .section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+      }
+
+      .section.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        position: relative;
+      }
+
+      .section.hide-left {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      .section.hide-right {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 2rem auto 0 auto;
+        padding: 0 1rem;
+      }
+
+      .project {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin-bottom: 0.5rem;
+        background: var(--card-bg);
+        border-radius: 8px;
+	border: 0.5px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+
+      .project img {
+        width: 100%;
+        height: auto;
+        max-width: 150px;
+        max-height: 100px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+
+      .project-content {
+        flex: 1;
+      }
+
+      .project-content h2 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      .project-content p {
+        margin: 0.5rem 0 1rem;
+        color: var(--text);
+        opacity: 0.85;
+      }
+
+      .project-content a {
+        text-decoration: none;
+        color: var(--link);
+      }
+
+      body.linguistics-active .pill-link {
+        background-color: #9483a7 !important;
+      }
+
+      body.linguistics-active .section-navbar button.active-tab {
+        border-bottom: 2px solid #9483a7 !important;
+      }
+
+      body.linguistics-active .read-more-btn {
+        color: #9483a7 !important;
+      }
+
+      body.linguistics-active .links {
+        color: #9483a7 !important;
+      }
+
+      body.data-science-active .pill-link {
+        background-color: #83a794 !important;
+      }
+
+      body.data-science-active .section-navbar button.active-tab {
+        border-bottom: 2px solid #83a794 !important;
+      }
+
+      body.data-science-active .read-more-btn {
+        color: #83a794 !important;
+      }
+
+      body.data-science-active .links {
+        color: #83a794 !important;
+      }
+
+      .read-more-view-on {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .read-more-btn {
+        top: -3px;
+        position: relative;
+      }
+
+      .pill-link {
+        background-color: #9483a7;
+        color: white !important;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 20px;
+        text-decoration: none;
+        display: inline-block;
+        align-self: flex-start;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .app-buttons-wrapper {
+  		  display: flex;
+  		  gap: 6px;
+  		  align-items: center;
+	    }
+      
+      .more-text {
+        overflow: hidden;
+        height: 0;
+        display: none;
+        transition: height 0.3s ease;
+        margin-top: 0.5rem;
+        color: var(--text);
+        opacity: 0.85;
+      }
+
+      .read-more-btn,
+      .links {
+        background: none;
+        border: none;
+        color: #9483a7;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 0;
+        margin-top: 0.5rem;
+        text-decoration: none;
+      }
+
+      #contact-section {
+        padding: 2rem;
+        margin: 0.5rem auto;
+        font-size: 1rem;
+        padding: 1.5rem;
+      }
+
+      #contact-section::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--text), transparent);
+        margin-bottom: 1.8rem;
+        opacity: 0.3;
+      }
+
+      #contact-section h2 {
+        margin-top: 0;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+
+      #contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      #contact-form label {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      #contact-form input[type="email"],
+      #contact-form textarea {
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: 'Helvetica Neue', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        transition: border-color 0.3s;
+      }
+
+      #contact-form input[type="email"]:focus,
+      #contact-form textarea:focus {
+        border-color: var(--link);
+        outline: none;
+      }
+
+      #contact-form #message-send {
+        align-self: flex-end;
+      }
+
+      footer {
+        text-align: center;
+        padding-bottom: 2rem;
+        font-size: 0.9rem;
+        color: var(--text);
+        opacity: 0.6;
+      }
+
+      @media (max-width: 600px) {
+        .project {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .project img {
+          max-width: 90%;
+          height: auto;
+          max-height: 180px;
+        }
+
+        .project-content h2 {
+          text-align: left;
+        }
+
+        .project-content p {
+          text-align: left;
+        }
+
+        .navbar-buttons {
+          flex-direction: row;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .nav-item {
+          width: auto;
+          justify-content: center;
+        }
+
+        .nav-item button {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <header>
+      <div class="header-content">
+        <div>
+          <h1 id="title">Your Name</h1>
+          <h3 id="subtitle">Projects</h3>
+        </div>
+        <div class="theme-switch-wrapper">
+          <div class="theme-switch" onclick="toggleTheme()"></div>
+          <button id="lang-toggle" onclick="toggleLanguage()">ES</button>
+        </div>
+      </div>
+    </header>
+    
+    <div class="section-navbar">
+      <div class="navbar-buttons">
+        <div class="nav-item">
+          <button onclick="showSection('linguistics')" id="btn-linguistics" class="active-tab">Linguistics</button>
+        </div>
+        <div class="nav-item">
+          <button onclick="showSection('data-science')" id="btn-data-science">Data Science</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div id="animated-wrapper">
+        <div id="sections-wrapper" class="sections-wrapper">
+        
+          <!-- Linguistics content -->
+          <div id="section-linguistics" class="section show">
+            <div class="project">
+              <img src="./imgs/project1-li-img.png" alt="Slavic creation/consumption predicates in light of Talmy’s typology" style="width: 100%; height: auto; object-fit: contain;">
+              <div class="project-content">
+                <h2 id="project1-li-title">Slavic creation/consumption predicates in light of Talmy’s typology</h2>
+                <p id="project1-li-desc">Book chapter published in Berit Gehrke, Denisa Lenertová, Roland Meyer, Daria Seres, Luka Szucsich & Joanna Zaleska (eds.). 2025. Advances in formal Slavic linguistics 2022, 33–74. Berlin: Language Science Press. </p>
+                <p class="more-text" id="project1-li-desc-more"> In this book chapter, based on a presentation at the 15th European Conference on Formal Description of Slavic Languages, I explore how Slavic languages talk about actions like creating or consuming things. According to a well-known linguistic classification, languages tend to follow certain patterns in how they describe events. Slavic languages are usually thought to belong to one group (called satellite-framed), but I show that when it comes to creation and consumption, they actually behave more like another group (verb-framed). I ran a study to test this idea and found supporting evidence. Building on this, I offer a new explanation for how these patterns might work in the grammar of Slavic languages and beyond. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="https://doi.org/10.5281/zenodo.15394164" class="pill-link" id="project1-li-link" target="_blank" rel="noopener noreferrer">View article</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="./imgs/project2-li-img.png" alt="The syntax of argument structure. Elements for a configurational theory" style="width: 100%; height: auto; object-fit: contain;">
+              <div class="project-content">
+                <h2 id="project2-li-title">The syntax of argument structure. Elements for a configurational theory</h2>
+                <p id="project2-li-desc">Here is the link to my PhD thesis, defended on 27 September 2024 at the Universitat Autònoma de Barcelona. </p>
+                <p class="more-text" id="project2-li-desc-more"> In my PhD thesis, I explored how verbs and their meanings are built in our minds. I focused on how predicate structure shapes whether a predicate feels like a state or an event. Building on previous literature, I argue that this difference doesn’t come from the meaning of the verb itself, but from how its elements are arranged in syntax. I introduce a basic, abstract building block (just one kind of syntactic head) that can combine in different ways and, depending on the structure, gives rise to different types of meaning. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="http://hdl.handle.net/10803/692728" class="pill-link" id="project2-li-link" target="_blank" rel="noopener noreferrer">View thesis</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project">
+              <img src="./imgs/project3-li-img.png" alt="Hybrid subjects in Spanish and Catalan. Halfway between agents and patients." style="width: 100%; height: auto; object-fit: contain;">
+              <div class="project-content">
+                <h2 id="project3-li-title">Hybrid subjects in Spanish and Catalan. Halfway between agents and patients. </h2>
+                <p id="project3-li-desc">Joint work with Josep Ausensi, published in Glossa: a journal of general linguistics 9(1). </p>
+                <p class="more-text" id="project3-li-desc-more"> In this project, we study a special kind of verb construction in Spanish and Catalan, like the verb matarse (“to kill oneself”), where the subject seems to act both as the doer and the receiver of the action. For example, in “Juan se mató en un accidente de coche,” Juan is both involved in causing and experiencing the accident. We propose that this happens because the subject carries two different semantic roles at once, linked to different parts of the sentence structure. Even though these verbs look similar on the surface to other reflexive verbs, they actually have a different underlying grammar. This shows that the usual idea of agents and external arguments doesn’t always apply, highlighting how language can express complex participant roles. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="https://doi.org/10.16995/glossa.10710" class="pill-link" id="project3-li-link" target="_blank" rel="noopener noreferrer">View article</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Data Science content -->
+          <div id="section-data-science" class="section hide-right">
+            <div class="project">
+              <img src="./imgs/project1-ds-img.png" alt="Fever Monitoring">
+              <div class="project-content">
+                <h2 id="project1-ds-title">Fever Monitoring</h2>
+                <p id="project1-ds-desc">A short Python notebook that lets you create and visualize a simple fever log with temperature readings and paracetamol intake, helping you track the progression of your fever using an interactive chart.</p>
+                <p class="more-text" id="project1-ds-desc-more"> In this notebook you can create and visualize a personal fever log over time. Timestamped body temperature readings are recorded, along with markers for when paracetamol was taken, and stored in a CSV file for easy access and future reference. The Plotly graph displays individual measurements, a smooth temperature curve, a polynomial regression line, and a 37°C threshold marker. Vertical dashed lines show when medication was assumed. Basic statistics (average, min, max) are shown below the graph. The interactive chart allows users to hover for details and explore the evolution of body temperature in an intuitive way. This tool can be helpful to monitor infection trends and visually assess the actual effect of paracetamol intake on body temperature. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <a href="https://colab.research.google.com/drive/1xK5qVw7KSefao6Z6Y2bhDDzoMx-Jbrzg" class="pill-link" id="project1-ds-link" target="_blank" rel="noopener noreferrer">View on Colab</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project">
+              <img src="./imgs/project2-ds-img.png" alt="WorkTrack app">
+              <div class="project-content">
+                <h2 id="project2-ds-title">WorkTrack</h2>
+                <p id="project2-ds-desc">A web app that keeps track of your workday, showing your expected clock-out time and the time remaining to work.</p>
+                <p class="more-text" id="project2-ds-desc-more"> WorkTrack is a browser-based tool for tracking your daily work sessions. It allows you to enter your clock-in time, total work duration, and break details, and then calculates your expected clock-out time and the time remaining in your workday. You can track breaks using either a preset duration or actual start and end times. The app adjusts your expected clock-out time accordingly, and supports ending a session early or continuing into overtime, with automatic recalculations in both cases. Session data is stored locally in the browser, so your current session will persist even if you close or refresh the tab. You can download a JSON log of your work history, upload a previous log, or clear all stored data as needed. WorkTrack is available both as a desktop version and a mobile version optimized to be installed as a Progressive Web App (PWA), enabling quick access and offline functionality. The interface is styled to resemble the look of the McDonnell Douglas MD-11 Flight Management Computer screen, a design inspired by the best aircraft ever. </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <div class="app-buttons-wrapper">
+                    <a href="https://4l3b.github.io/WorkTrack/" class="pill-link" id="project2-ds-link" target="_blank" rel="noopener noreferrer">Desktop app</a> / 
+                    <a href="https://4l3b.github.io/WorkTrack_pwa/" class="pill-link" id="project2-ds-pwa-link" target="_blank" rel="noopener noreferrer">PWA app</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+	    <div class="project">
+              <img src="./imgs/project3-ds-img.png" alt="WorkTrack app">
+              <div class="project-content">
+                <h2 id="project3-ds-title">Work time logs analysis and classification model</h2>
+                <p id="project3-ds-desc">Analysis of one year of work time logs collected with the WorkTrack app, exploring patterns and outliers. Developed a classification model to predict clock-in, break-start, break-end, and clock-out events based on the data extracted from the work time logs.</p>
+                <p class="more-text" id="project3-ds-desc-more">In this project I analyzed a dataset of daily work time logs collected from my app, WorkTrack. I combined two exported JSON files into a single dataframe and performed statistical analysis to identify key patterns, distributions, and outliers in work behavior. Afterward, I built a classification model that predicts the type of event (clock in, break start, break end, or clock out) based on the time of day. This Python notebook serves as both a practical exercise in data science techniques and an application of AI to real-world user data.</p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                    <a href="#" class="pill-link" id="project3-ds-link" target="_blank" rel="noopener noreferrer">View on Colab</a>
+                </div>
+              </div>
+            </div>
+		  
+          </div>
+        </div>
+      </div>
+      
+      <div id="contact-section">
+        <h2 id="contact-title">Contact me</h2>
+        <p id="contact-desc">If you’re interested in my work, feel free to check out my <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> profile or send me an email below. </p>
+        <form id="contact-form" action="https://formspree.io/f/tuo-id" method="POST">
+          <label for="email" id="contact-form-email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+          <label for="message" id="contact-form-message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          <button type="submit" class="pill-link" id="message-send">Send</button>
+        </form>
+      </div>
+    </div>
+    
+    <footer id="footer-text"> © 2025 Alessandro Bigolin. All rights reserved. </footer>
+    
+    <script>
+      const root = document.documentElement;
+      let savedLang = localStorage.getItem('lang') || 'en';
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+      }
+      const translations = {
+        es: {
+          title: "Tu Nombre",
+          subtitle: "Proyectos",
+          "btn-linguistics": "Lingüística",
+          "btn-data-science": "Ciencia de Datos",
+          "btn-contact": "Contacto",
+          "read-more-btn": "Leer más ▾",
+          "read-less-btn": "Leer menos ▴",
+      
+          "project1-li-title": "Predicados de creación/consumo eslavos a la luz de la tipología de Talmy",
+          "project1-li-desc": "Capítulo de libro publicado en Berit Gehrke, Denisa Lenertová, Roland Meyer, Daria Seres, Luka Szucsich & Joanna Zaleska (eds.). 2025. Advances in formal Slavic linguistics 2022, 33–74. Berlín: Language Science Press.",
+          "project1-li-desc-more": "En este capítulo de libro, basado en una presentación en la 15th European Conference on Formal Description of Slavic Languages, exploro cómo los idiomas eslavos expresan acciones como crear o consumir cosas. Según una clasificación lingüística bien conocida, los idiomas tienden a seguir ciertos patrones en la manera en que describen eventos. Los idiomas eslavos suelen considerarse parte de un grupo (llamado de marco satélite), pero demuestro que, cuando se trata de creación y consumo, en realidad se comportan más como otro grupo (de marco verbal). Realicé un estudio para poner a prueba esta idea y encontré evidencia que la respalda. A partir de esto, propongo una nueva explicación sobre cómo podrían funcionar estos patrones en la gramática de las lenguas eslavas y más allá.",
+          "project1-li-link": "Ver artículo",
+
+          "project2-li-title": "La sintaxis de la estructura argumental. Elementos para una teoría configuracional",
+          "project2-li-desc": "Aquí está el enlace a mi tesis doctoral, defendida el 27 de septiembre de 2024 en la Universitat Autònoma de Barcelona.",
+          "project2-li-desc-more": "En mi tesis doctoral, exploré cómo se construyen en nuestra mente los verbos y sus significados. Me centré en cómo la estructura del predicado influye en si un predicado se siente como un estado o un evento. Basándome en la literatura previa, argumento que esta diferencia no proviene del significado del verbo en sí, sino de cómo sus elementos están organizados en la sintaxis. Introduzco un bloque de construcción básico y abstracto (un tipo de nucleo sintáctico) que puede combinarse de diferentes maneras. Dependiendo de esta estructura, obtenemos diferentes tipos de significado.",
+          "project2-li-link": "Ver tesis",
+
+          "project3-li-title": "Sujetos híbridos en español y catalán. Entre agentes y pacientes.",
+          "project3-li-desc": "Trabajo conjunto con Josep Ausensi, publicado en Glossa: a journal of general linguistics 9(1).",
+          "project3-li-desc-more": "En este proyecto estudiamos un tipo especial de construcción verbal en español y catalan, como el verbo matarse, donde el sujeto parece actuar tanto como quien realiza la acción como quien la recibe. Por ejemplo, en “Juan se mató en un accidente de coche,” Juan está involucrado tanto en causar como en experimentar el accidente. Proponemos que esto ocurre porque el sujeto lleva dos roles semánticos diferentes a la vez, vinculados a distintas partes de la estructura de la oración. Aunque estos verbos se parecen en la superficie a otros verbos reflexivos, en realidad tienen una gramática subyacente distinta. Esto muestra que la idea habitual de agentes y argumentos externos no siempre se aplica, evidenciando cómo el lenguaje puede expresar roles complejos de los participantes.",
+          "project3-li-link": "Ver artículo",
+
+          "project1-ds-title": "Monitoreo de Fiebre",
+          "project1-ds-desc": "Notebook en Python que permite registrar y visualizar de forma interactiva la evolución de la fiebre, incluyendo temperaturas y administración de paracetamol.",
+          "project1-ds-desc-more": "Con este notebook puedes crear y visualizar un registro personal de fiebre a lo largo del tiempo. Se registran lecturas de temperatura corporal con su respectiva marca de tiempo, junto con los momentos en que se tomó paracetamol, y todo se guarda en un archivo CSV para facilitar su acceso y consulta futura. Un gráfico interactivo muestra mediciones individuales, una curva de temperatura, una línea de regresión polinómica y un marcador de 37°C. Líneas discontinuas verticales indican cuándo se asumió la medicación. Se muestran estadísticas básicas (promedio, mínimo, máximo) debajo del gráfico. El gráfico permite a los usuarios pasar el cursor para obtener detalles y explorar la evolución de la temperatura corporal de manera intuitiva. Esta herramienta puede ser útil para monitorear tendencias de infección y evaluar visualmente el efecto real de la ingesta de paracetamol en la temperatura corporal.",
+          "project1-ds-link": "Ver en Colab",
+
+          "project2-ds-title": "WorkTrack",
+          "project2-ds-desc": "Una aplicación web que registra tu jornada laboral, mostrando tu hora estimada de salida y el tiempo restante de trabajo.",
+          "project2-ds-desc-more": "WorkTrack es una herramienta basada en navegador para registrar y gestionar tus jornadas laborales. Permite ingresar la hora de entrada, la duración total del trabajo y los detalles de las pausas, y luego calcula automáticamente la hora estimada de salida y el tiempo restante de trabajo. Puedes registrar las pausas usando una duración predefinida o ingresando manualmente la hora de inicio y fin. La aplicación ajusta la hora de salida en función de estos datos, y también permite finalizar la sesión antes de tiempo o continuar en horas extra, actualizando los cálculos en consecuencia. Los datos de la sesión se almacenan localmente en el navegador, por lo que tu sesión actual se conservará incluso si cierras o recargas la pestaña. También puedes descargar un archivo JSON con el historial de tus sesiones, subir uno anterior o borrar todos los datos almacenados si lo deseas. WorkTrack está disponible tanto en versión de escritorio como en versión móvil, optimizada para ser instalada como una Aplicación Web Progresiva (PWA), lo que permite un acceso rápido y funcionalidad sin conexión. La interfaz está inspirada en el estilo del Flight Management Computer del McDonnell Douglas MD-11, el mejor avión de todos los tiempos.",
+          "project2-ds-link": "App Desktop",
+          "project2-ds-pwa-link": "App PWA",
+
+	  "project3-ds-title": "Análisis de registros de tiempo laboral y modelo de clasificación",
+          "project3-ds-desc": "Análisis de registros de tiempo de trabajo recogidos con la app WorkTrack, identificando patrones y valores atípicos. Creación de un modelo de clasificación para predecir eventos de entrada, inicio y fin de pausa, y salida, basado en los datos extraídos de los registros de tiempo de trabajo.",
+          "project3-ds-desc-more": "En este proyecto analicé un año de registros diarios de tiempo de trabajo recogidos con mi aplicación WorkTrack. Uní dos archivos JSON exportados en un solo dataframe y realicé un análisis estadístico para descubrir patrones, distribuciones y comportamientos atípicos. Luego, desarrollé un modelo de clasificación que, según la hora del día, predice si el evento es una entrada, el inicio o fin de una pausa, o la salida. Este notebook en Python es tanto un ejercicio práctico de técnicas de ciencia de datos como una aplicación de inteligencia artificial con datos reales de usuarios.",
+          "project3-ds-link": "Ver en Colab",
+
+          "contact-title": "Contáctame",
+          "contact-desc": 'Si te interesa mi trabajo, no dudes en visitar mi perfil de <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> o enviarme un correo electrónico aquí abajo.',
+          "contact-form-email": "Tu correo",
+          "email-placeholder": "tu.email@ejemplo.com",
+          "contact-form-message": "Mensaje",
+          "message": "Escribe tu mensaje aquí...",
+          "message-send": "Envía",
+          "footer-text": "© 2025 Alessandro Bigolin. Todos los derechos reservados.",
+          "lang-toggle": "EN"
+        }
+      };
+      
+      function toggleTheme() {
+        const current = root.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+      
+      function toggleLanguage() {
+        savedLang = savedLang === 'en' ? 'es' : 'en';
+        applyLanguage(savedLang);
+        localStorage.setItem('lang', savedLang);
+      }
+      const originalTexts = {};
+      
+      function saveOriginalTexts() {
+        for (const id in translations.es) {
+          const el = document.getElementById(id);
+          if (el) {
+            if (id === "contact-desc") {
+              originalTexts[id] = el.innerHTML;
+            }
+            else {
+              originalTexts[id] = el.innerText;
+            }
+          }
+        }
+      }
+      
+      function applyLanguage(lang) {
+        document.documentElement.lang = lang;
+        if (lang === 'en') {
+          for (const id in originalTexts) {
+            const el = document.getElementById(id);
+            if (el) {
+              if (id === "contact-desc") {
+                el.innerHTML = originalTexts[id];
+              }
+              else {
+                el.innerText = originalTexts[id];
+              }
+            }
+          }
+          document.getElementById('email').placeholder = "your.email@example.com";
+      
+          document.querySelectorAll('.read-more-btn').forEach(btn => {
+            const projectCard = btn.closest('.project');
+            const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
+      
+            btn.textContent = isExpanded ?
+              "Read less ▴" :
+              "Read more ▾";
+          });
+          return;
+        }
+        const langData = translations[lang];
+        for (const id in langData) {
+          const el = document.getElementById(id);
+          if (el) {
+            if (id === "contact-desc") {
+              el.innerHTML = langData[id];
+            }
+            else {
+              el.innerText = langData[id];
+            }
+          }
+        }
+        if (langData['email-placeholder']) {
+          document.getElementById('email').placeholder = langData['email-placeholder'];
+        }
+      
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+          const projectCard = btn.closest('.project');
+          const isExpanded = projectCard.getAttribute('data-expanded') === 'true';
+      
+          btn.textContent = isExpanded ?
+            langData["read-less-btn"] :
+            langData["read-more-btn"];
+        });
+      }
+      saveOriginalTexts();
+      applyLanguage(savedLang);
+      
+      function showSection(section) {
+        // Contract any expanded project cards when a navbar button is pressed
+        const expandedProjects = document.querySelectorAll('.project[data-expanded="true"]');
+        expandedProjects.forEach(projectCard => {
+          const moreText = projectCard.querySelector('.more-text');
+          const button = projectCard.querySelector('.read-more-btn');
+          const lang = savedLang;
+      
+          // Remove the expanded attribute
+          projectCard.removeAttribute('data-expanded');
+      
+          // Animate collapse of moreText
+          const currentHeight = moreText.scrollHeight + "px";
+          moreText.style.height = currentHeight;
+      
+          // Force reflow
+          void moreText.offsetHeight;
+      
+          moreText.style.transition = 'height 0.3s ease';
+          moreText.style.paddingTop = '0';
+          moreText.style.paddingBottom = '0';
+          moreText.style.marginTop = '0';
+          moreText.style.marginBottom = '0';
+          moreText.style.height = '0px';
+      
+          // Update button text
+          button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
+      
+          moreText.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'height') {
+              moreText.style.transition = '';
+              moreText.style.display = 'none';
+              moreText.style.marginBottom = '1rem';
+              moreText.removeEventListener('transitionend', handler);
+            }
+          });
+        });
+      
+        const ling = document.getElementById('section-linguistics');
+        const data = document.getElementById('section-data-science');
+        const btnL = document.getElementById('btn-linguistics');
+        const btnD = document.getElementById('btn-data-science');
+        const wrapper = document.getElementById('animated-wrapper');
+        const body = document.body;
+      
+        const isAlreadyActive =
+          (section === 'linguistics' && btnL.classList.contains('active-tab')) ||
+          (section === 'data-science' && btnD.classList.contains('active-tab'));
+      
+        if (isAlreadyActive) {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return;
+        }
+      
+        // Toggle body class for color theme
+        if (section === 'linguistics') {
+          body.classList.add('linguistics-active');
+          body.classList.remove('data-science-active');
+        }
+        else {
+          body.classList.add('data-science-active');
+          body.classList.remove('linguistics-active');
+        }
+      
+        // Save current height
+        const startHeight = wrapper.offsetHeight;
+      
+        // Remove show temporarily to get correct height
+        ling.classList.remove('show');
+        data.classList.remove('show');
+      
+        // Wait for DOM to update
+        requestAnimationFrame(() => {
+          let newSection;
+          if (section === 'linguistics') {
+            newSection = ling;
+            btnL.classList.add('active-tab');
+            btnD.classList.remove('active-tab');
+      
+            ling.classList.remove('hide-left', 'hide-right');
+            data.classList.remove('hide-left');
+            data.classList.add('hide-right');
+          }
+          else {
+            newSection = data;
+            btnD.classList.add('active-tab');
+            btnL.classList.remove('active-tab');
+      
+            data.classList.remove('hide-left', 'hide-right');
+            ling.classList.remove('hide-right');
+            ling.classList.add('hide-left');
+          }
+      
+          // Temporarily make the new section visible to measure height
+          newSection.classList.add('show');
+          newSection.style.visibility = 'hidden';
+          newSection.style.position = 'absolute';
+      
+          // Measure new height
+          const endHeight = newSection.offsetHeight;
+      
+          // Set wrapper height to trigger transition
+          wrapper.style.height = startHeight + 'px';
+      
+          requestAnimationFrame(() => {
+            wrapper.style.height = endHeight + 'px';
+      
+            // Clean up temporary styles after transition ends
+            setTimeout(() => {
+              newSection.style.visibility = '';
+              newSection.style.position = '';
+              wrapper.style.height = '';
+            }, 300);
+          });
+        });
+      }
+      
+      document.addEventListener("DOMContentLoaded", function() {
+        const buttons = document.querySelectorAll('.read-more-btn');
+      
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            const projectCard = button.closest('.project');
+            const moreText = projectCard.querySelector('.more-text');
+            const lang = savedLang;
+      
+            const isCollapsed = moreText.clientHeight === 0;
+      
+            if (isCollapsed) {
+              projectCard.setAttribute('data-expanded', 'true');
+      
+              moreText.style.display = 'block';
+              const fullHeight = moreText.scrollHeight + "px";
+      
+              void moreText.offsetHeight;
+      
+              moreText.style.transition = 'height 0.3s ease';
+              moreText.style.height = fullHeight;
+      
+              button.textContent = lang === "es" ? translations.es["read-less-btn"] : "Read less ▴";
+      
+              moreText.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'height') {
+                  moreText.style.height = 'auto';
+                  moreText.removeEventListener('transitionend', handler);
+                }
+              });
+            }
+            else {
+              projectCard.removeAttribute('data-expanded');
+
+              const currentHeight = moreText.scrollHeight + "px";
+              moreText.style.height = currentHeight;
+
+              void moreText.offsetHeight;
+
+              moreText.style.transition = 'height 0.3s ease';
+              
+              moreText.style.paddingTop = '0';
+              moreText.style.paddingBottom = '0';
+              moreText.style.marginTop = '0';
+              moreText.style.marginBottom = '0';
+
+              moreText.style.height = '0px';
+
+              button.textContent = lang === "es" ? translations.es["read-more-btn"] : "Read more ▾";
+
+              moreText.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'height') {
+                  moreText.style.transition = '';
+                  moreText.style.display = 'none';
+                  moreText.style.marginBottom = '1rem';
+                  moreText.removeEventListener('transitionend', handler);
+                }
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
