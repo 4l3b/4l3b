@@ -594,6 +594,22 @@
                 </div>
               </div>
             </div>
+
+            <div class="project">
+              <a href="./imgs/project5-ds-img.png" target="_blank"><img src="./imgs/project5-ds-img.png" alt="Giro d'Italia 2025 Rankings Presentation"></a>
+              <div class="project-content">
+                <h2 id="project5-ds-title">Racing Bars: Tour de France 2025</h2>
+                <p id="project5-ds-desc">In this project, I collected and cleaned Tour de France 2025 rankings data from the main classifications (general, points, mountains, and young) and visualized them with dynamic bar chart race graphs that depict the evolution of the competition day by day. </p>
+                <p class="more-text" id="project5-ds-desc-more">Raw classification data for each stage of the 2025 Tour de France was collected from the official website and manually pasted into a CSV file, with one column for each day of the race. I then processed the data using a Python script to generate clean, structured datasets. Across all classifications, I used regular expressions to extract and separate each rider's name and team into distinct columns. For the general and young rider classifications, rider times were converted into seconds. The time values were also inverted, so that the leader (with the lowest time) would appear with the longest bar in the visualizations. The cleaned data was uploaded to Flourish, where I created dynamic bar chart races. For each rider who appeared in the Top 5 at any point during the race, I also sourced and uploaded a photo to appear at the end of their bar. The full Python script used for data cleaning is available via the Colab link, and the final visualizations can be viewed on Flourish. Enjoy the (bar chart) race! </p>
+                <div class="read-more-view-on">
+                  <button class="read-more-btn">Read more ▾</button>
+                  <div class="app-buttons-wrapper">
+                    <a href="https://colab.research.google.com/drive/..." class="pill-link" id="project5-ds-link" target="_blank" rel="noopener noreferrer">View on Colab</a> / 
+                    <a href="https://..." class="pill-link" id="project5-ds-fl-link" target="_blank" rel="noopener noreferrer">View on Flourish</a>
+                  </div>
+                </div>
+              </div>
+            </div>
             
           </div>
         </div>
@@ -681,6 +697,12 @@
           "project4-ds-desc": "En este proyecto, recopilé y limpié los datos de las clasificaciones del Giro de Italia 2025 y los visualicé mediante una Story de Tableau.",
           "project4-ds-desc-more": "Los datos, centrados en las clasificaciones General, de Puntos y de Montaña, fueron extraídos mediante web scraping. Después de limpiarlos y organizarlos en archivos CSV, los importé a Tableau Public y creé una Story para mostrar a los cinco mejores corredores en cada clasificación. Para la clasificación General, donde las posiciones se basan en el tiempo acumulado, invertí los valores de la diferencia de tiempo para que la visualización fuera significativa; de lo contrario, el líder de la carrera aparecería con la barra más corta. El resultado es un conjunto de visualizaciones que van más allá de las posiciones, ayudando a entender inmediatamente la escala de las diferencias entre los atletas en las clasificaciones finales.",
           "project4-ds-link": "Ver en Colab",
+
+          "project5-ds-title": "Barras en Carrera: Tour de Francia 2025",
+          "project5-ds-desc": "En este proyecto, recopilé y limpié los datos de clasificaciones del Tour de Francia 2025 correspondientes a las principales categorías (general, puntos, montaña y jóvenes), y los visualicé mediante gráficos dinámicos tipo bar chart race que muestran la evolución de la competencia día a día.",
+          "project5-ds-desc-more": "Los datos brutos de clasificación para cada etapa del Tour de Francia 2025 fueron recopilados del sitio web oficial y pegados manualmente en un archivo CSV, con una columna para cada día de la competencia. Luego procesé los datos utilizando un script en Python para generar conjuntos de datos limpios y estructurados. En todas las clasificaciones, usé expresiones regulares para extraer y separar el nombre y el equipo de cada ciclista en columnas distintas. Para las clasificaciones basadas en tiempo (general y jóvenes), convertí los tiempos de los ciclistas a segundos. Estos valores también fueron invertidos, de modo que el líder (quien tiene el menor tiempo) apareciera con la barra más larga en las visualizaciones. Los datos limpios fueron cargados en Flourish, donde creé visualizaciones dinámicas tipo bar chart race. Para cada ciclista que apareció en el Top 5 en algún momento de la carrera, también busqué y subí una foto para que se mostrara al final de su barra. El script completo de Python utilizado para el procesamiento de datos está disponible en el enlace de Colab, y las visualizaciones finales se pueden ver en Flourish. ¡Disfruta de la carrera! ",
+          "project5-ds-link": "Ver en Colab",
+          "project5-ds-fl-link": "Ver en Flourish",
 
           "contact-title": "Contáctame",
           "contact-desc": 'Si te interesa mi trabajo, no dudes en visitar mi perfil de <a href="https://www.linkedin.com/in/bigale" target="_blank" rel="noopener noreferrer" class="links">LinkedIn</a> o enviarme un correo electrónico aquí abajo.',
