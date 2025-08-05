@@ -4,7 +4,6 @@
     
     <!-- Ah, a fellow code explorer! Welcome. Feel free to look around. This HTML document is part of the portfolio too, after all. -->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Alessandro Bigolin - Projects</title>
@@ -392,11 +391,6 @@
         opacity: 0.6;
       }
 
-      .carousel iframe {
-        width: 100%;
-        height: 400px;
-      }
-
       @media (max-width: 600px) {
         .project {
           flex-direction: column;
@@ -430,10 +424,6 @@
 
         .nav-item button {
           font-size: 1rem;
-        }
-
-        .carousel iframe {
-          height: 250px;
         }
       }
     </style>
@@ -611,38 +601,12 @@
               <div class="project-content">
                 <h2 id="project5-ds-title">Racing Bars: Tour de France 2025</h2>
                 <p id="project5-ds-desc">In this project, I collected and cleaned Tour de France 2025 rankings data from the main classifications (general, points, mountains, and young) and visualized them with dynamic bar chart race graphs that depict the evolution of the competition day by day. </p>
-                <div class="extra-content" style="display:none;">
                   <p class="more-text" id="project5-ds-desc-more">Raw classification data for each stage of the 2025 Tour de France was collected from the official website and manually pasted into a CSV file, with one column for each day of the race. I then processed the data using a Python script to generate clean, structured datasets. Across all classifications, I used regular expressions to extract and separate each rider's name and team into distinct columns. For the general and young rider classifications, rider times were converted into seconds. The time values were also inverted, so that the leader (with the lowest time) would appear with the longest bar in the visualizations. The cleaned data was uploaded to Flourish, where I created dynamic bar chart races. For each rider who appeared in the Top 5 at any point during the race, I also sourced and uploaded a photo to appear at the end of their bar. The full Python script used for data cleaning is available via the Colab link, and the final visualizations can be viewed on Flourish. Enjoy the (bar chart) race! </p>
-                  <div id="tourDeFranceCarousel" class="carousel slide" data-bs-ride="carousel">
-          					<div class="carousel-inner">
-            					<div class="carousel-item active">
-              					  <iframe src="https://flo.uri.sh/visualisation/24312542/embed" frameborder="0" style="width:100%; height:400px;"></iframe>
-            					</div>
-            					<div class="carousel-item">
-              					  <iframe src="YOUR_FLOURISH_EMBED_URL_2" frameborder="0" style="width:100%; height:400px;"></iframe>
-            					</div>
-            					<div class="carousel-item">
-              					  <iframe src="YOUR_FLOURISH_EMBED_URL_3" frameborder="0" style="width:100%; height:400px;"></iframe>
-            					</div>
-            					<div class="carousel-item">
-              					  <iframe src="YOUR_FLOURISH_EMBED_URL_4" frameborder="0" style="width:100%; height:400px;"></iframe>
-            					</div>
-          				    </div>
-          					<button class="carousel-control-prev" type="button" data-bs-target="#tourDeFranceCarousel" data-bs-slide="prev">
-            					<span class="carousel-control-prev-icon"></span>
-            					<span class="visually-hidden">Previous</span>
-          					</button>
-          					<button class="carousel-control-next" type="button" data-bs-target="#tourDeFranceCarousel" data-bs-slide="next">
-            					<span class="carousel-control-next-icon"></span>
-            					<span class="visually-hidden">Next</span>
-          					</button>
-        				  </div>
-        				</div>
                 <div class="read-more-view-on">
                   <button id="read-more-project5" class="read-more-btn">Read more ▾</button>
                   <div class="app-buttons-wrapper">
                     <a href="https://colab.research.google.com/drive/..." class="pill-link" id="project5-ds-link" target="_blank" rel="noopener noreferrer">View on Colab</a> / 
-                    <a href="https://..." class="pill-link" id="project5-ds-fl-link" target="_blank" rel="noopener noreferrer">View on Flourish</a>
+                    <a href="https://public.flourish.studio/story/3262720/" class="pill-link" id="project5-ds-fl-link" target="_blank" rel="noopener noreferrer">View on Flourish</a>
                   </div>
                 </div>
               </div>
@@ -1019,26 +983,6 @@
         });
       });
 
-      // Card contraction with carousel project
-      const readMoreBtn = document.getElementById('read-more-project5');
-      
-      if (readMoreBtn) {
-        readMoreBtn.addEventListener('click', () => {
-          const projectContent = readMoreBtn.closest('.project-content');
-          const extraContent = projectContent.querySelector('.extra-content');
-      
-          if (!extraContent) return;
-      
-          if (extraContent.style.display === 'none' || extraContent.style.display === '') {
-            extraContent.style.display = 'block';
-            readMoreBtn.textContent = 'Read less ▴';
-          } else {
-            extraContent.style.display = 'none';
-            readMoreBtn.textContent = 'Read more ▾';
-          }
-        });
-      }
-
       // Alert for sent messages (contact form)
       document.getElementById("contact-form").addEventListener("submit", function(event) {
         event.preventDefault(); // prevent page reload
@@ -1061,6 +1005,5 @@
         });
       });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
