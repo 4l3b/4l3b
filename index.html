@@ -311,6 +311,12 @@
         align-items: center;
       }
 
+      .app-buttons-wrapper a:not(:last-child)::after {
+        content: " | ";
+        color: var(--text-muted);
+        padding: 0 8px;
+      }
+
       .more-text {
         overflow: hidden;
         height: 0;
@@ -559,7 +565,7 @@
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                   <div class="app-buttons-wrapper">
-                    <a href="https://4l3b.github.io/WorkTrack/" class="pill-link" id="project1-ds-link" target="_blank" rel="noopener noreferrer">Desktop app</a> / 
+                    <a href="https://4l3b.github.io/WorkTrack/" class="pill-link" id="project1-ds-link" target="_blank" rel="noopener noreferrer">Desktop app</a> 
                     <a href="https://4l3b.github.io/WorkTrack_pwa/" class="pill-link" id="project1-ds-pwa-link" target="_blank" rel="noopener noreferrer">PWA app</a>
                   </div>
                 </div>
