@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     
-    <!-- Ah, a fellow code explorer! Welcome. Feel free to look around. This HTML document is part of my portfolio too, after all. -->
+    <!-- Hello, fellow code explorer! Feel free to look around. This HTML document is part of my portfolio too, after all. -->
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -71,39 +71,22 @@
         align-self: flex-end;
       }
 
-      .theme-switch {
-        position: relative;
-        width: 29px;
-        height: 18px;
-        background: var(--border);
-        border-radius: 10px;
+      .theme-icon {
+        font-size: 1rem;
         cursor: pointer;
-        transition: background 0.3s;
+        color: var(--text);
+        transition: color 0.3s, font-size 0.3s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0px;
+        border: none;
+        padding: 0;
+        background: none;
       }
 
-      .theme-switch::before {
-        content: "☾";
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        width: 16px;
-        height: 16px;
-        background: var(--text);
-        color: white;
-        font-size: 14px;
-        line-height: 17px;
-        text-indent: 3px;
-        border-radius: 50%;
-        transition: transform 0.3s ease;
-      }
-
-      [data-theme="dark"] .theme-switch::before {
-        transform: translateX(11px);
-        content: "☼";
-        color: black;
-        font-size: 19px;
-        line-height: 17px;
-        text-indent: 2.5px;
+      [data-theme="dark"] .theme-icon {
+        color: var(--text);
       }
 
       #lang-toggle {
@@ -447,7 +430,7 @@
           <h3 id="subtitle">Projects</h3>
         </div>
         <div class="theme-switch-wrapper">
-          <div class="theme-switch" onclick="toggleTheme()"></div>
+          <button class="theme-icon" onclick="toggleTheme()">☾</button>
           <button id="lang-toggle" onclick="toggleLanguage()">ES</button>
         </div>
       </div>
@@ -787,10 +770,16 @@
       };
       
       function toggleTheme() {
-        const current = root.getAttribute('data-theme');
-        const newTheme = current === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        const body = document.body;
+        const themeIcon = document.querySelector('.theme-icon');
+
+        if (body.getAttribute('data-theme') === 'dark') {
+          body.setAttribute('data-theme', 'light');
+          themeIcon.textContent = '☾';
+        } else {
+          body.setAttribute('data-theme', 'dark');
+          themeIcon.textContent = '☀';
+        }
       }
       
       function toggleLanguage() {
