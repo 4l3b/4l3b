@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
-    <!-- Hello, fellow code explorer! Feel free to look around. This HTML document is part of my portfolio too, after all. -->
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -538,8 +536,8 @@
               <a href="./imgs/project1-ds-img.png" target="_blank"><img src="./imgs/project1-ds-img.png" alt="TFM"></a>
               <div class="project-content">
                 <h2 id="project1-ds-title">Trains in Veneto: Delays and classification model</h2>
-                <p id="project1-ds-desc">Master’s Thesis for the Master’s in Data Science and Artificial Intelligence at EBIS Business Techschool and EUNEIZ - University of Vitoria-Gasteiz (2024-2025). The project focuses on the analysis and prediction of train delays in the Veneto region (Italy).</p>
-                <p class="more-text" id="project1-ds-desc-more">In this project, I collected and processed train circulation data from public sources, including Trenitalia and TrainStats, for all stations in the Veneto region. I explored the distribution of delays and implemented machine learning models such as LightGBM and CatBoost to predict whether a train would arrive on time or delayed at each station. Finally, I created interactive visualizations in Tableau to communicate patterns and model performance.</p>
+                <p id="project1-ds-desc">Final project for the Master’s in Data Science and Artificial Intelligence at EBIS Business Techschool and EUNEIZ - University of Vitoria-Gasteiz (2024-2025). The project focuses on the analysis and prediction of train delays in the Veneto region (Italy).</p>
+                <p class="more-text" id="project1-ds-desc-more">I collected and processed train circulation data from public sources, including Trenitalia and TrainStats, for all stations in the Veneto region. I explored the distribution of delays and implemented machine learning models such as LightGBM and CatBoost to predict whether a train would arrive on time or delayed at each station. Finally, I created interactive visualizations in Tableau to communicate patterns and model performance.</p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                     <a href="https://github.com/4l3b/tfm" class="pill-link" id="project1-ds-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
@@ -568,7 +566,7 @@
               <div class="project-content">
                 <h2 id="project3-ds-title">WorkTrack logs: Analysis and classification model</h2>
                 <p id="project3-ds-desc">Analysis of one year of work time logs collected with the WorkTrack app, exploring patterns and outliers. Developed a classification model to predict clock-in, break-start, break-end, and clock-out events based on the data extracted from the work time logs.</p>
-                <p class="more-text" id="project3-ds-desc-more">In this project I analyzed a dataset of daily work time logs collected from my app, WorkTrack. I combined two exported JSON files into a single dataframe and performed statistical analysis to identify key patterns, distributions, and outliers in work behavior. Afterward, I built a classification model that predicts the type of event (clock in, break start, break end, or clock out) based on the time of day. This Python notebook serves as both a practical exercise in data science techniques and an application of AI to real-world user data.</p>
+                <p class="more-text" id="project3-ds-desc-more">I analyzed a dataset of daily work time logs collected from my app, WorkTrack. I combined two exported JSON files into a single dataframe and performed statistical analysis to identify key patterns, distributions, and outliers in work behavior. Afterward, I built a classification model that predicts the type of event (clock in, break start, break end, or clock out) based on the time of day. This Python notebook serves as both a practical exercise in data science techniques and an application of AI to real-world user data.</p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
                     <a href="https://colab.research.google.com/drive/1wSBHQrsddOJGjcvGe63sg_YpIBO0AmJy?usp=sharing" class="pill-link" id="project3-ds-link" target="_blank" rel="noopener noreferrer">View on Colab</a>
@@ -593,7 +591,7 @@
               <a href="./imgs/project5-ds-img.png" target="_blank"><img src="./imgs/project5-ds-img.png" alt="Giro d'Italia 2025 Rankings Presentation"></a>
               <div class="project-content">
                 <h2 id="project5-ds-title">Visualizing Giro d’Italia 2025 rankings using web scraping and Tableau</h2>
-                <p id="project5-ds-desc">In this project, I collected and cleaned Giro d’Italia 2025 rankings data and visualized them using a Tableau Story. </p>
+                <p id="project5-ds-desc">I collected and cleaned Giro d’Italia 2025 rankings data and visualized them using a Tableau Story. </p>
                 <p class="more-text" id="project5-ds-desc-more">The data, focused on the General, Points, and Mountains classifications, where extracted through web scraping. After cleaning and organizing them into structured CSV files, I imported them into Tableau Public and created a Story to showcase the Top 5 riders in each classification. For the General classification, where positions are based on cumulative time, I inverted the time gap values to make the visualization meaningful, otherwise the race leader would appear with the shortest bar. The result is a set of visualizations that go beyond rankings, helping viewers immediately understand the scale of differences between athletes in the final standings. </p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
@@ -609,7 +607,7 @@
               <a href="./imgs/project6-ds-img.png" target="_blank" style="display: inline-block; overflow: hidden;"><img src="./imgs/project5-ds-img.png" alt="Tour de France 2025 Bar chart races" style="width: 300px; height: 200px; object-fit: cover; object-position: top; display: block;" /></a>
               <div class="project-content">
                 <h2 id="project6-ds-title">Racing bars: Tour de France 2025</h2>
-                <p id="project6-ds-desc">In this project, I collected and cleaned Tour de France 2025 rankings data from the main classifications (general, points, mountains, and young) and visualized them with dynamic bar chart race graphs that depict the evolution of the competition day by day. </p>
+                <p id="project6-ds-desc">I collected and cleaned Tour de France 2025 rankings data from the main classifications (general, points, mountains, and young) and visualized them with dynamic bar chart race graphs that depict the evolution of the competition day by day. </p>
                   <p class="more-text" id="project6-ds-desc-more">Raw classification data for each stage of the race was collected from the official Tour de France website and manually pasted into a CSV file, with one column for each day of the race. I then processed the data using a Python script to generate clean, structured datasets. Across all classifications, I used regular expressions to extract and separate each rider's name and team into distinct columns. For the general and young rider classifications, rider times were converted into seconds. The time values were also inverted, so that the leader (with the lowest time) would appear with the longest bar in the visualizations. The cleaned data was uploaded to Flourish, where I created dynamic bar chart races. For each rider who appeared in the Top 5 at any point during the race, I also sourced and uploaded a photo to appear at the end of their bar. The full Python script used for data cleaning is available via the Colab link, and the final visualizations can be viewed on Flourish. Enjoy the (bar chart) race! </p>
                 <div class="read-more-view-on">
                   <button id="read-more-project5" class="read-more-btn">Read more ▾</button>
@@ -638,7 +636,7 @@
               <a href="./imgs/project8-ds-img.png" target="_blank"><img src="./imgs/project8-ds-img.png" alt="Sci-fi books chart"></a>
               <div class="project-content">
                 <h2 id="project8-ds-title">Sci-fi Reading Tracker</h2>
-                <p id="project8-ds-desc">This project tracks the science fiction books I've read, along with a personal rating from 0 to 5 that I've assigned to each of them.</p>
+                <p id="project8-ds-desc">Here I track the science fiction books I've read, along with a personal rating from 0 to 5 that I've assigned to each of them.</p>
                 <p class="more-text" id="project8-ds-desc-more"> The book information is stored in a JSON file. I generate a bar chart from this data using a Python script with Seaborn + Matplotlib. The chart is automatically rebuilt via a GitHub Actions workflow whenever the JSON file changes, and it is published on GitHub Pages along with a minimal HTML page. </p>
                 <div class="read-more-view-on">
                   <button class="read-more-btn">Read more ▾</button>
@@ -736,13 +734,13 @@
           "project4-ds-link": "Ver en GitHub",
           
           "project5-ds-title": "Visualización de las clasificaciones del Giro de Italia 2025 con web scraping y Tableau",
-          "project5-ds-desc": "En este proyecto, recopilé y limpié los datos de las clasificaciones del Giro de Italia 2025 y los visualicé mediante una Story de Tableau.",
+          "project5-ds-desc": "Recopilé y limpié los datos de las clasificaciones del Giro de Italia 2025 y los visualicé mediante una Story de Tableau.",
           "project5-ds-desc-more": "Los datos, centrados en las clasificaciones General, de Puntos y de Montaña, fueron extraídos mediante web scraping. Después de limpiarlos y organizarlos en archivos CSV, los importé a Tableau Public y creé una Story para mostrar a los cinco mejores corredores en cada clasificación. Para la clasificación General, donde las posiciones se basan en el tiempo acumulado, invertí los valores de la diferencia de tiempo para que la visualización fuera significativa; de lo contrario, el líder de la carrera aparecería con la barra más corta. El resultado es un conjunto de visualizaciones que van más allá de las posiciones, ayudando a entender inmediatamente la escala de las diferencias entre los atletas en las clasificaciones finales.",
           "project5-ds-link": "Ver en Colab",
           "project5-ds-tb-link": "Ver en Tableau",
 
           "project6-ds-title": "Barras en carrera: Tour de Francia 2025",
-          "project6-ds-desc": "En este proyecto, recopilé y limpié los datos de clasificaciones del Tour de Francia 2025 correspondientes a las principales categorías (general, puntos, montaña y jóvenes), y los visualicé mediante gráficos dinámicos tipo bar chart race que muestran la evolución de la competencia día a día.",
+          "project6-ds-desc": "Recopilé y limpié los datos de clasificaciones del Tour de Francia 2025 correspondientes a las principales categorías (general, puntos, montaña y jóvenes), y los visualicé mediante gráficos dinámicos tipo bar chart race que muestran la evolución de la competencia día a día.",
           "project6-ds-desc-more": "Los datos brutos de clasificación para cada etapa de la carrera fueron recopilados del sitio web oficial del Tour de France y pegados en un archivo CSV, con una columna para cada día de la competencia. Luego procesé los datos utilizando un script en Python para generar conjuntos de datos limpios y estructurados. En todas las clasificaciones, usé expresiones regulares para extraer y separar el nombre y el equipo de cada ciclista en columnas distintas. Para las clasificaciones basadas en tiempo (general y jóvenes), convertí los tiempos de los ciclistas a segundos. Estos valores también fueron invertidos, de modo que el líder (quien tiene el menor tiempo) apareciera con la barra más larga en las visualizaciones. Los datos limpios fueron cargados en Flourish, donde creé visualizaciones dinámicas tipo bar chart race. Para cada ciclista que apareció en el Top 5 en algún momento de la carrera, también busqué y subí una foto para que se mostrara al final de su barra. El script completo de Python utilizado para el procesamiento de datos está disponible en el enlace de Colab, y las visualizaciones finales se pueden ver en Flourish. ¡Disfruta de la carrera! ",
           "project6-ds-link": "Ver en Colab",
           "project6-ds-fl-link": "Ver en Flourish",
@@ -753,7 +751,7 @@
           "project7-ds-link": "Ver en Colab",
 
           "project8-ds-title": "Registro de lecturas de ciencia ficción",
-          "project8-ds-desc": "Este proyecto lleva un registro de los libros de ciencia ficción que he leído, junto con una calificación personal del 0 al 5 que les he asignado a cada uno.",
+          "project8-ds-desc": "Aquí llevo un registro de los libros de ciencia ficción que he leído, junto con una calificación personal del 0 al 5 que les he asignado a cada uno.",
           "project8-ds-desc-more": "La información de los libros se guarda en un archivo JSON. A partir de estos datos, genero un gráfico de barras mediante un script de Python que utiliza Seaborn y Matplotlib. El gráfico se reconstruye automáticamente mediante un workflow de GitHub Actions cada vez que se modifica el archivo JSON, y se publica en GitHub Pages con una sencilla página HTML.",
           "project8-ds-link": "Ver en GitHub",
           
